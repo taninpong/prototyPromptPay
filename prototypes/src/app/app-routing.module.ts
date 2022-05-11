@@ -34,6 +34,13 @@ const routes: Routes = [
   {
     path: 'form-binding',
     loadChildren: () => import('./form-binding/form-binding.module').then( m => m.FormBindingPageModule)
+  },  {
+    path: 'form-send-data',
+    loadChildren: () => import('./form-send-data/form-send-data.module').then( m => m.FormSendDataPageModule)
+  },
+  {
+    path: 'form-receive-data',
+    loadChildren: () => import('./form-receive-data/form-receive-data.module').then( m => m.FormReceiveDataPageModule)
   },
 
 

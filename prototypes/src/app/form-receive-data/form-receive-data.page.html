@@ -1,0 +1,21 @@
+<ion-content mode="ios">
+
+  <ng-container *ngIf="data">
+    <ion-list>
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
+        <ion-input type="text" [value]="data.title" readonly></ion-input>
+      </ion-item>
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">เบอร์ติดต่อ
+        </ion-label>
+        <ion-input type="tel" [value]="data.phoneNumber" readonly></ion-input>
+      </ion-item>
+      <ion-item lines="none" color="tertiary">
+        <ion-label position="stacked">หมายเหตุ</ion-label>
+        <ion-textarea type="text" [value]="data.remark" readonly></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+</ion-content>
