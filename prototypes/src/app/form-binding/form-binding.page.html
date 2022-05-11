@@ -1,0 +1,43 @@
+<ion-content mode="ios">
+
+  <ion-list>
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">ชื่อหัวข้อ
+          <ion-text color="danger" *ngIf="isInvalid('title')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">ที่อยู่
+          <ion-text color="danger"
+            *ngIf="isInvalid('streetAddress') || isInvalid('district') || isInvalid('city') || isInvalid('province')|| isInvalid('postalCode')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" placeholder="บ้านเลขที่,หมู่,ตึก,ซอย,ถนน" formControlName="streetAddress"></ion-input>
+        <ion-input type="text" placeholder="ตำบล" formControlName="district"></ion-input>
+        <ion-input type="text" placeholder="อำเภอ" formControlName="city"></ion-input>
+        <ion-input type="text" placeholder="จังหวัด" formControlName="province"></ion-input>
+        <ion-input type="tel" placeholder="รหัสไปรษณีย์" formControlName="postalCode"></ion-input>
+      </ion-item>
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">เบอร์ติดต่อ
+          <ion-text color="danger" *ngIf="isInvalid('phoneNumber')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+        <ion-input type="tel" formControlName="phoneNumber"></ion-input>
+      </ion-item>
+      <ion-item lines="none" color="tertiary">
+        <ion-label position="stacked">หมายเหตุ</ion-label>
+        <ion-textarea type="text" formControlName="remark"></ion-textarea>
+      </ion-item>
+      <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">สร้างข้อมูล
+      </ion-button>
+    </form>
+  </ion-list>
+
+</ion-content>

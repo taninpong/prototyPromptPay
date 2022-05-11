@@ -26,9 +26,25 @@ const routes: Routes = [
   {
     path: 'cart-dialog-template',
     loadChildren: () => import('./cart-dialog-template/cart-dialog-template.module').then( m => m.CartDialogTemplatePageModule)
-  },  {
+  },
+  {
     path: 'form-template',
     loadChildren: () => import('./form-template/form-template.module').then( m => m.FormTemplatePageModule)
+  },
+  {
+    path: 'form-binding',
+    loadChildren: () => import('./form-binding/form-binding.module').then( m => m.FormBindingPageModule)
+  },  {
+    path: 'form-send-data',
+    loadChildren: () => import('./form-send-data/form-send-data.module').then( m => m.FormSendDataPageModule)
+  },
+  {
+    path: 'form-receive-data',
+    loadChildren: () => import('./form-receive-data/form-receive-data.module').then( m => m.FormReceiveDataPageModule)
+  },
+  {
+    path: 'memory',
+    loadChildren: () => import('./memory/memory.module').then( m => m.MemoryPageModule)
   },
 
 

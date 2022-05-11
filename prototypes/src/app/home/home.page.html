@@ -1,7 +1,25 @@
 <ion-content class="ion-padding" mode="ios">
 
   <ion-list class="ion-margin-bottom" lines="full">
-    <ion-list-header>
+    <ion-list-header class="ion-padding">
+      <ion-label>Reference tools</ion-label>
+    </ion-list-header>
+
+    <a target="_blank" href="https://ionicframework.com/docs/components">
+      <ion-item color="tertiary" button>
+        <ion-label>UI Components</ion-label>
+      </ion-item>
+    </a>
+    <a target="_blank" href="https://ionic.io/ionicons">
+      <ion-item color="tertiary" button>
+        <ion-label>Icons</ion-label>
+      </ion-item>
+    </a>
+
+  </ion-list>
+
+  <ion-list class="ion-margin-bottom" lines="full">
+    <ion-list-header class="ion-padding">
       <ion-label>Template pages</ion-label>
     </ion-list-header>
 
@@ -34,18 +52,23 @@
   </ion-list>
 
   <ion-list class="ion-margin-bottom" lines="full">
-    <ion-list-header>
-      <ion-label>Reference tools</ion-label>
+    <ion-list-header class="ion-padding">
+      <ion-label>Advances tip</ion-label>
     </ion-list-header>
 
-    <a target="_blank" href="https://ionicframework.com/docs/components">
+    <a target="_blank" routerLink="/form-binding">
       <ion-item color="tertiary" button>
-        <ion-label>UI Components</ion-label>
+        <ion-label>รับ/ส่งข้อมูล ภายในฟอร์ม</ion-label>
       </ion-item>
     </a>
-    <a target="_blank" href="https://ionic.io/ionicons">
+    <a target="_blank" routerLink="/form-send-data">
       <ion-item color="tertiary" button>
-        <ion-label>Icons</ion-label>
+        <ion-label>รับ/ส่งข้อมูล ระหว่างหน้า</ion-label>
+      </ion-item>
+    </a>
+    <a target="_blank" routerLink="/memory">
+      <ion-item color="tertiary" button>
+        <ion-label>รับ/ส่งข้อมูล ผ่าน Service</ion-label>
       </ion-item>
     </a>
 

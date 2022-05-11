@@ -1,0 +1,30 @@
+<ion-content mode="ios">
+
+  <ion-list>
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">ชื่อหัวข้อ
+          <ion-text color="danger" *ngIf="isInvalid('title')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item lines="full" color="tertiary">
+        <ion-label position="stacked">เบอร์ติดต่อ
+          <ion-text color="danger" *ngIf="isInvalid('phoneNumber')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+        <ion-input type="tel" formControlName="phoneNumber"></ion-input>
+      </ion-item>
+      <ion-item lines="none" color="tertiary">
+        <ion-label position="stacked">หมายเหตุ</ion-label>
+        <ion-textarea type="text" formControlName="remark"></ion-textarea>
+      </ion-item>
+      <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">สร้างข้อมูล
+      </ion-button>
+    </form>
+  </ion-list>
+
+</ion-content>
