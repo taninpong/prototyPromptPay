@@ -1,20 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding" mode="ios">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list class="ion-margin-bottom" lines="full">
+    <ion-list-header>
+      <ion-label>Template pages</ion-label>
+    </ion-list-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <a target="_blank" routerLink="/cart-edit-template">
+      <ion-item color="tertiary" button>
+        <ion-label>ตระกร้าสินค้า (แบบแก้ไขได้)</ion-label>
+      </ion-item>
+    </a>
+    <a target="_blank" routerLink="/cart-checkout-template">
+      <ion-item color="tertiary" button>
+        <ion-label>ตระกร้าสินค้า (จ่ายเงิน)</ion-label>
+      </ion-item>
+    </a>
+
+  </ion-list>
+
+  <ion-list class="ion-margin-bottom" lines="full">
+    <ion-list-header>
+      <ion-label>Reference tools</ion-label>
+    </ion-list-header>
+
+    <a target="_blank" href="https://ionicframework.com/docs/components">
+      <ion-item color="tertiary" button>
+        <ion-label>UI Components</ion-label>
+      </ion-item>
+    </a>
+    <a target="_blank" href="https://ionic.io/ionicons">
+      <ion-item color="tertiary" button>
+        <ion-label>Icons</ion-label>
+      </ion-item>
+    </a>
+
+  </ion-list>
+
 </ion-content>
