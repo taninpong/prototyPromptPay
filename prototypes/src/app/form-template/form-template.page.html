@@ -1,0 +1,30 @@
+<ion-content mode="ios">
+
+  <!-- Do not forget import "ReactiveFormsModule" in "module.ts" -->
+  <ion-list>
+    <ion-item lines="full" color="tertiary">
+      <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item lines="full" color="tertiary">
+      <ion-label position="stacked">ที่อยู่</ion-label>
+      <ion-input type="text" placeholder="บ้านเลขที่,หมู่,ตึก,ซอย,ถนน"></ion-input>
+      <ion-input type="text" placeholder="ตำบล"></ion-input>
+      <ion-input type="text" placeholder="อำเภอ"></ion-input>
+      <ion-input type="text" placeholder="จังหวัด"></ion-input>
+      <ion-input type="tel" placeholder="รหัสไปรษณีย์"></ion-input>
+    </ion-item>
+    <ion-item lines="full" color="tertiary">
+      <ion-label position="stacked">เบอร์ติดต่อ</ion-label>
+      <ion-input type="tel"></ion-input>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-label position="stacked">หมายเหตุ</ion-label>
+      <ion-textarea type="text"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+<ion-footer>
+  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">สร้างข้อมูล</ion-button>
+</ion-footer>
