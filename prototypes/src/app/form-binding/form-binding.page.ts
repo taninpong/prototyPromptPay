@@ -20,7 +20,6 @@ export class FormBindingPage implements OnInit {
       'province': [null, Validators.required],
       'postalCode': [null, Validators.required],
       'phoneNumber': [null, Validators.required],
-      'fullAddress': null,
       'remark': null,
     });
   }
@@ -34,7 +33,8 @@ export class FormBindingPage implements OnInit {
     }
 
     if (this.fg.valid) {
-      console.log(this.fg.value);
+      let msg = `Form data\n\nชื่อหัวข้อ: ${this.fg.get("title").value}\nที่อยู่: ${this.fg.get("streetAddress").value} ${this.fg.get("district").value} ${this.fg.get("city").value} ${this.fg.get("province").value} ${this.fg.get("postalCode").value}\nเบอร์ติดต่อ: ${this.fg.get("phoneNumber").value}\nหมายเหตุ: ${this.fg.get("remark").value}`
+      alert(msg);
     }
   }
 
