@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'cart-checkout-template',
     loadChildren: () => import('./cart-checkout-template/cart-checkout-template.module').then( m => m.CartCheckoutTemplatePageModule)
   },
+  {
+    path: 'option-dialog-template',
+    loadChildren: () => import('./option-dialog-template/option-dialog-template.module').then( m => m.OptionDialogTemplatePageModule)
+  },
 
 ];
 
