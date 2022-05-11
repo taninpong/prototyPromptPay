@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'form-receive-data',
     loadChildren: () => import('./form-receive-data/form-receive-data.module').then( m => m.FormReceiveDataPageModule)
   },
+  {
+    path: 'memory',
+    loadChildren: () => import('./memory/memory.module').then( m => m.MemoryPageModule)
+  },
 
 
 ];
