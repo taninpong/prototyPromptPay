@@ -1,3 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-label *ngIf="!isAdvanceMode">เบื้องต้น</ion-label>
+      <ion-label *ngIf="isAdvanceMode">ขั้นสูง</ion-label>
+      <ion-toggle color="danger" [(ngModel)]="isAdvanceMode"></ion-toggle>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding" mode="ios">
 
   <ion-list class="ion-margin-bottom" lines="full">
@@ -28,6 +38,11 @@
     <a target="_blank" routerLink="/form-template">
       <ion-item color="tertiary" button>
         <ion-label>กรอกข้อมูลในฟอร์ม</ion-label>
+      </ion-item>
+    </a>
+    <a *ngIf="isAdvanceMode" target="_blank" routerLink="/form-binding">
+      <ion-item color="danger" button>
+        <ion-label>รับ/ส่งข้อมูลภายในฟอร์ม</ion-label>
       </ion-item>
     </a>
 

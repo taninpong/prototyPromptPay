@@ -26,9 +26,14 @@ const routes: Routes = [
   {
     path: 'cart-dialog-template',
     loadChildren: () => import('./cart-dialog-template/cart-dialog-template.module').then( m => m.CartDialogTemplatePageModule)
-  },  {
+  },
+  {
     path: 'form-template',
     loadChildren: () => import('./form-template/form-template.module').then( m => m.FormTemplatePageModule)
+  },
+  {
+    path: 'form-binding',
+    loadChildren: () => import('./form-binding/form-binding.module').then( m => m.FormBindingPageModule)
   },
 
 
