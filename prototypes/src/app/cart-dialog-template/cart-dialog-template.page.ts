@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartDialogTemplatePage implements OnInit {
 
+  // Reference from "cart-adhoc-completed"
   constructor() { }
 
   ngOnInit() {

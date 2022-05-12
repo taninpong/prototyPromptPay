@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormTemplatePage implements OnInit {
 
+  // Reference from "user-profile-new-address"
   constructor() {
     // Do not forget import "ReactiveFormsModule" in "module.ts"
   }
