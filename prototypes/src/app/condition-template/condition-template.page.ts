@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConditionTemplatePage implements OnInit {
 
+  // Reference from "conditional-expression"
   constructor() { }
 
   ngOnInit() {
