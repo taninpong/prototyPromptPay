@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'memory',
     loadChildren: () => import('./memory/memory.module').then( m => m.MemoryPageModule)
   },
+  {
+    path: 'list-template',
+    loadChildren: () => import('./list-template/list-template.module').then( m => m.ListTemplatePageModule)
+  },
 
 
 ];
