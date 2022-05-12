@@ -50,6 +50,18 @@ const routes: Routes = [
     path: 'list-template',
     loadChildren: () => import('./list-template/list-template.module').then( m => m.ListTemplatePageModule)
   },
+  {
+    path: 'form-input-template',
+    loadChildren: () => import('./form-input-template/form-input-template.module').then( m => m.FormInputTemplatePageModule)
+  },
+  {
+    path: 'condition-template',
+    loadChildren: () => import('./condition-template/condition-template.module').then( m => m.ConditionTemplatePageModule)
+  },
+  {
+    path: 'agreement-template',
+    loadChildren: () => import('./agreement-template/agreement-template.module').then( m => m.AgreementTemplatePageModule)
+  },
 
 
 ];

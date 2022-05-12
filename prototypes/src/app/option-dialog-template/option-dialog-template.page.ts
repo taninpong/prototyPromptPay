@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OptionDialogTemplatePage implements OnInit {
 
+  // Reference from "account-bank-select"
   constructor() { }
 
   ngOnInit() {
