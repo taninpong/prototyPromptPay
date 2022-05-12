@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'condition-template',
     loadChildren: () => import('./condition-template/condition-template.module').then( m => m.ConditionTemplatePageModule)
   },
+  {
+    path: 'agreement-template',
+    loadChildren: () => import('./agreement-template/agreement-template.module').then( m => m.AgreementTemplatePageModule)
+  },
 
 
 ];
