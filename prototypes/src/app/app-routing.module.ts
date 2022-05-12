@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'form-input-template',
     loadChildren: () => import('./form-input-template/form-input-template.module').then( m => m.FormInputTemplatePageModule)
   },
+  {
+    path: 'condition-template',
+    loadChildren: () => import('./condition-template/condition-template.module').then( m => m.ConditionTemplatePageModule)
+  },
 
 
 ];
