@@ -1,5 +1,15 @@
 <ion-content mode="ios">
 
+  <ion-card>
+    <ion-card-content>
+      <h1>
+        <ion-text color="danger"><b>คำเตือน</b></ion-text>
+      </h1>
+      <h2>Prototype จะไม่ใช้การแสดงผลแบบหน้านี้</h2>
+      <h2>การแสดงผลในหน้านี้ สำหรับประกอบควมเข้าใจในการทำงานกับ Service เท่านั้น</h2>
+    </ion-card-content>
+  </ion-card>
+
   <ion-list>
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-item lines="full" color="tertiary">
@@ -37,14 +47,6 @@
         <ion-icon slot="start" name="trash"></ion-icon>
         ลบข้อมูลในฟอร์มทิ้ง
       </ion-button>
-
-      <ion-card>
-        <ion-card-content>
-          <h2>Prototype จะไม่ใช้การแสดงผลแบบหน้านี้</h2>
-          <h2>การแสดงผลในหน้านี้ สำหรับประกอบควมเข้าใจในการทำงานกับ Service เท่านั้น</h2>
-        </ion-card-content>
-      </ion-card>
-
     </form>
   </ion-list>
 

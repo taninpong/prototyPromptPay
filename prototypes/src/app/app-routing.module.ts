@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'list-template',
     loadChildren: () => import('./list-template/list-template.module').then( m => m.ListTemplatePageModule)
   },
+  {
+    path: 'form-input-template',
+    loadChildren: () => import('./form-input-template/form-input-template.module').then( m => m.FormInputTemplatePageModule)
+  },
 
 
 ];

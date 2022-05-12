@@ -1,0 +1,157 @@
+<ion-content mode="ios">
+
+  <ion-card>
+    <ion-card-content>
+      <h1>
+        <ion-text color="danger"><b>คำเตือน</b></ion-text>
+      </h1>
+      <h2>Template หน้านี้ไม่จำเป็นต้อง copy "ion-item-divider"</h2>
+      <h2>ใส่ไว้เพื่อแบ่งสัดส่วนเฉยๆ</h2>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list lines="full">
+
+    <ion-item-divider class="ion-padding">
+      <ion-label>Selectors</ion-label>
+    </ion-item-divider>
+
+    <ion-item color="tertiary" lines="none">
+      <ion-label>
+        <h2>เพศ (action-sheet)</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-select class="ion-no-padding ion-padding-end ion-select-full" okText="ตกลง" cancelText="ยกเลิก"
+        interface="action-sheet" placeholder="กรุณาระบุเพศ">
+        <ion-select-option value="male">ชาย</ion-select-option>
+        <ion-select-option value="female">หญิง</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="tertiary" lines="none">
+      <ion-label>
+        <h2>เพศ (alert)</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-select class="ion-no-padding ion-padding-end ion-select-full" okText="ตกลง" cancelText="ยกเลิก"
+        interface="alert" placeholder="กรุณาระบุเพศ">
+        <ion-select-option value="male">ชาย</ion-select-option>
+        <ion-select-option value="female">หญิง</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider class="ion-padding">
+      <ion-label>Toggles</ion-label>
+    </ion-item-divider>
+
+    <ion-item color="tertiary">
+      <ion-label>อนุญาตส่งข้อมูลให้ 3rd party</ion-label>
+      <ion-toggle value="true" class="toggle-checked" color="danger"></ion-toggle>
+    </ion-item>
+
+    <ion-item color="tertiary">
+      <ion-label>อนุญาตส่งข้อมูลให้ 3rd party</ion-label>
+      <ion-toggle value="false" color="danger"></ion-toggle>
+    </ion-item>
+
+    <ion-item color="tertiary">
+      <ion-label class="ion-margin-start">
+        <h3><b>อนุญาตส่งข้อมูลให้ 3rd party</b></h3>
+      </ion-label>
+      <ion-checkbox slot="start" color="primary" mode="md" class="ion-no-margin">
+      </ion-checkbox>
+    </ion-item>
+    
+    <ion-item-divider class="ion-padding">
+      <ion-label>Checkboxs</ion-label>
+    </ion-item-divider>
+
+    <ion-list-header mode="md" color="tertiary">
+      <ion-label>
+        <h2><b>วันที่เปิดร้านค้า</b></h2>
+      </ion-label>
+    </ion-list-header>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox class="checkbox-checked" slot="start" color="primary">
+      </ion-checkbox>
+      <ion-label>
+        <h3>วันจันทร์</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox class="checkbox-checked" slot="start" color="primary">
+      </ion-checkbox>
+      <ion-label>
+        <h3>วันอังคาร</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox slot="start" color="primary">
+      </ion-checkbox>
+      <ion-label>
+        <h3>วันพุธ</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox slot="start" color="primary">
+      </ion-checkbox>
+      <ion-label>
+        <h3>วันพฤหัสบดี</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox slot="start" color="primary">
+      </ion-checkbox>
+      <ion-label>
+        <h3>วันศุกร์</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox slot="start" color="primary">
+      </ion-checkbox>
+      <ion-label>
+        <h3>วันเสาร์</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-checkbox slot="start" color="primary">
+      </ion-checkbox>
+      <ion-label>
+        <h3>วันอาทิตย์</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-item-divider class="ion-padding">
+    <ion-label>อื่นๆ</ion-label>
+  </ion-item-divider>
+
+  <ion-item lines="none" class="ion-no-padding" color="tertiary">
+    <ion-label class="ion-text-end" slot="end">
+      <h3><img height="15" src="assets/imgs/copy.png" /> คัดลอกที่อยู่บัตรมาใช้</h3>
+    </ion-label>
+  </ion-item>
+
+  <!-- TODO: Add "ion-datetime" later -->
+  <ion-item-divider class="ion-padding">
+    <ion-label>Datetime</ion-label>
+  </ion-item-divider>
+
+  <ion-item color="tertiary" lines="none">
+    <ion-label>
+      <h2>เร็วๆ นี้...</h2>
+    </ion-label>
+  </ion-item>
+
+  <!-- <ion-item lines="full" color="tertiary">
+      <ion-label position="stacked">วัน/เดือน/ปีเกิด</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="วันเดือนปีเกิด">
+      </ion-datetime>
+    </ion-item> -->
+    
+
+  <!-- <ion-datetime displayFormat="HH:mm" placeholder="00:00" [ngModelOptions]="{standalone: true}"></ion-datetime> -->
+
+</ion-content>
