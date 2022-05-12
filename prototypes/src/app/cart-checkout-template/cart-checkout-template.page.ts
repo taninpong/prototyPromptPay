@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartCheckoutTemplatePage implements OnInit {
 
+  // Reference from "shopping-cart-pay"
   constructor() { }
 
   ngOnInit() {
