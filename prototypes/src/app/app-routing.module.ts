@@ -70,6 +70,10 @@ const routes: Routes = [
     path: 'consent-info-manager-template',
     loadChildren: () => import('./consent-info-manager-template/consent-info-manager-template.module').then( m => m.ConsentInfoManagerTemplatePageModule)
   },
+  {
+    path: 'home-template',
+    loadChildren: () => import('./home-template/home-template.module').then( m => m.HomeTemplatePageModule)
+  },
 
 
 ];

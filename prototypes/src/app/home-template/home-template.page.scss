@@ -1,0 +1,26 @@
+ion-slides {
+    height: 80px;
+    ion-slide {
+        height: 80px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+    }
+}
+
+ion-note {
+    font-size: 14px;
+    align-self: flex-start;
+    margin-top: 14px;
+}
+
+.shortcut-noti {
+    height: 10px !important;
+    width: 10px !important;
+    // position: absolute;
+    // right: 20%;
+    position: fixed;
+    margin-left: -10px;
+}
