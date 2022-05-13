@@ -62,6 +62,14 @@ const routes: Routes = [
     path: 'agreement-template',
     loadChildren: () => import('./agreement-template/agreement-template.module').then( m => m.AgreementTemplatePageModule)
   },
+  {
+    path: 'consent-info-user-template',
+    loadChildren: () => import('./consent-info-user-template/consent-info-user-template.module').then( m => m.ConsentInfoUserTemplatePageModule)
+  },
+  {
+    path: 'consent-info-manager-template',
+    loadChildren: () => import('./consent-info-manager-template/consent-info-manager-template.module').then( m => m.ConsentInfoManagerTemplatePageModule)
+  },
 
 
 ];

@@ -1,0 +1,78 @@
+<ion-content mode="ios">
+
+  <ion-card color="tertiary">
+    <ion-item lines="full" detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img src="assets/imgs/defaultshop.png" />
+      </ion-avatar>
+      <ion-label>
+        <h2><b>ชื่อร้านค้า&nbsp;<img src="assets/imgs/iconofficail.png"></b></h2>
+        <h3>ได้ทำการขออนุญาตเข้าถึงข้อมูล</h3>
+      </ion-label>
+    </ion-item>
+    
+    <ion-item color="tertiary" lines="none">
+      <ion-label>
+        <h3><b>ขออนุญาตเข้าถึงข้อมูลดังต่อไปนี้</b></h3>
+        <ion-text>
+          <h3>• ข้อมูล แรก</h3>
+          <h3>• ข้อมูล สอง</h3>
+          <h3>• ข้อมูล สาม</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card class="ion-padding-top">
+    <ion-item color="tertiary" lines="inset">
+      <ion-label>
+        <h3><b>ข้อความ</b></h3>
+        <ion-text>
+          <h3>ขออนุญาตเข้าถึงข้อมูลเพื่อจัดการข้อมูลและแก้ไขปัญหา</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary" lines="none">
+      <ion-label>
+        <h3><b>วันที่ขออนุญาต</b></h3>
+        <ion-text>
+          <h3>วันที่ 11/05/2565 16.43</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="ion-no-margin">
+        <ion-card color="tertiary" class="ion-no-padding border-radius">
+          <ion-list class="ion-margin-bottom" lines="none">
+            <ion-list-header mode="md" color="tertiary">
+              <ion-label>
+                <h3>ยอมรับข้อตกลง</h3>
+              </ion-label>
+            </ion-list-header>
+            <ion-radio-group mode="md">
+              <ion-item color="tertiary">
+                <ion-label>
+                  <h3><b>อนุญาต</b></h3>
+                </ion-label>
+                <ion-radio slot="start" value="true"></ion-radio>
+              </ion-item>
+              <ion-item color="tertiary">
+                <ion-label>
+                  <h3><b>ปฏิเสธ</b></h3>
+                </ion-label>
+                <ion-radio slot="start" value="false"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </ion-card>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+<ion-footer>
+  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน</ion-button>
+</ion-footer>
