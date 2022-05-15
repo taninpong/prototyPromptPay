@@ -74,6 +74,18 @@ const routes: Routes = [
     path: 'home-template',
     loadChildren: () => import('./home-template/home-template.module').then( m => m.HomeTemplatePageModule)
   },
+  {
+    path: 'home-prompt-pay',
+    loadChildren: () => import('./home-prompt-pay/home-prompt-pay.module').then( m => m.HomePromptPayPageModule)
+  },
+  {
+    path: 'account-select',
+    loadChildren: () => import('./account-select/account-select.module').then( m => m.AccountSelectPageModule)
+  },
+  {
+    path: 'transfer-to',
+    loadChildren: () => import('./transfer-to/transfer-to.module').then( m => m.TransferToPageModule)
+  },
 
 
 ];
