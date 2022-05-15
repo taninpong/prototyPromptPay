@@ -86,6 +86,10 @@ const routes: Routes = [
     path: 'transfer-to',
     loadChildren: () => import('./transfer-to/transfer-to.module').then( m => m.TransferToPageModule)
   },
+  {
+    path: 'ppay-payment-creating',
+    loadChildren: () => import('./ppay-payment-creating/ppay-payment-creating.module').then( m => m.PpayPaymentCreatingPageModule)
+  },
 
 
 ];
