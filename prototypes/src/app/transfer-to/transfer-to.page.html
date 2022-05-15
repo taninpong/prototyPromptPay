@@ -5,19 +5,20 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
+    <ion-item color="tertiary" lines="none">
+      <ion-label>
+        <h2>ระบุเลขพร้อมเพย์</h2>
+        <ion-text color="danger" *ngIf="isInvalid('PPay')">
+          ข้อมูลไม่ถูกต้อง
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary" lines="none">
+      <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์" formControlName="PPay"></ion-input>
+    </ion-item>
+    <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง</ion-button>
+  </form>
 
-  <ion-item color="tertiary" lines="none">
-    <ion-label>
-      <h2>ระบุเลขพร้อมเพย์
-        <!-- <ion-text color="danger">
-            ข้อมูลไม่ถูกต้อง
-          </ion-text> -->
-      </h2>
-    </ion-label>
-  </ion-item>
-  <ion-item color="tertiary" lines="none">
-    <ion-input type="tel" placeholder="ระบุเลขพร้อมเพย์"></ion-input>
-  </ion-item>
-  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit" routerLink="/ppay-payment-creating">ตกลง</ion-button>
 
 </ion-content>
