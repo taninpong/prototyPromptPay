@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home-prompt-pay',
     pathMatch: 'full'
   },
   {
@@ -34,7 +34,8 @@ const routes: Routes = [
   {
     path: 'form-binding',
     loadChildren: () => import('./form-binding/form-binding.module').then( m => m.FormBindingPageModule)
-  },  {
+  },
+  {
     path: 'form-send-data',
     loadChildren: () => import('./form-send-data/form-send-data.module').then( m => m.FormSendDataPageModule)
   },
@@ -89,6 +90,14 @@ const routes: Routes = [
   {
     path: 'ppay-payment-creating',
     loadChildren: () => import('./ppay-payment-creating/ppay-payment-creating.module').then( m => m.PpayPaymentCreatingPageModule)
+  },
+  {
+    path: 'ppay-payment-confirm',
+    loadChildren: () => import('./ppay-payment-confirm/ppay-payment-confirm.module').then( m => m.PpayPaymentConfirmPageModule)
+  },
+  {
+    path: 'ppay-payment-detail',
+    loadChildren: () => import('./ppay-payment-detail/ppay-payment-detail.module').then( m => m.PpayPaymentDetailPageModule)
   },
 
 
