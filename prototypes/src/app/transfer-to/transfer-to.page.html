@@ -5,20 +5,62 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="fg" (ngSubmit)="onSave()">
-    <ion-item color="tertiary" lines="none">
-      <ion-label>
-        <h2>ระบุเลขพร้อมเพย์</h2>
-        <ion-text color="danger" *ngIf="isInvalid('PPay')">
-          ข้อมูลไม่ถูกต้อง
-        </ion-text>
-      </ion-label>
-    </ion-item>
-    <ion-item color="tertiary" lines="none">
-      <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์" formControlName="PPay"></ion-input>
-    </ion-item>
-    <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง</ion-button>
-  </form>
+  <div [formGroup]="fg">
+    <div *ngIf="data.type=='PP'">
+
+      <ion-item color="tertiary" lines="none">
+        <ion-label>
+          <h2>ระบุเลขพร้อมเพย์</h2>
+          <ion-text color="danger" *ngIf="isInvalid('PPay')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="none">
+        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์" formControlName="PPay"></ion-input>
+      </ion-item>
+    </div>
+    <div *ngIf="data.type=='Bank'">
+      <!-- <ion-item color="tertiary" lines="none">
+        <ion-label>
+          <h2>Bank</h2>
+          <ion-text color="danger" *ngIf="isInvalid('PPay')">
+            ข้อมูลไม่ถูกต้อง
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="none">
+        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์" formControlName="PPay"></ion-input>
+      </ion-item> -->
+      <ion-list lines="inset">
+        <ion-list-header mode="md">
+          <ion-label>เลือกธนาคาร</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of databank" (click)="onSelectItem(item)" color="tertiary">
+          <ion-avatar slot="start">
+            <img [src]="item.logo">
+          </ion-avatar>
+          <ion-label>
+            <b>{{ item.name }}</b>
+            <ion-text color="medium">
+              <h3>{{ item.id }}</h3>
+            </ion-text>
+          </ion-label>
+          <!-- <img width="20" height="20" class="qr"
+            [src]="isChecked(item) ? 'assets/imgs/correctblue.png' : 'assets/imgs/correctgray.png'" /> -->
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+
+
 
 
 </ion-content>
+<ion-footer class="ion-no-border">
+  <form (ngSubmit)="onSave()">
+    <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง</ion-button>
+  </form>
+
+</ion-footer>

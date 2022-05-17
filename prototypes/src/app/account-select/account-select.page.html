@@ -9,13 +9,16 @@
     <ion-list-header lines="none" mode="md">
       <ion-label>เลือกรูปแบบบัญชี</ion-label>
     </ion-list-header>
-    <ion-item color="tertiary" routerLink="/transfer-to">
+    <ion-item color="tertiary" routerLink="/transfer-to" (click)="goPP()">
       <ion-avatar slot="start">
         <img src="assets/imgs/promtpayicon.png">
       </ion-avatar>
       <ion-label><b>พร้อมเพย์</b></ion-label>
     </ion-item>
-    <ion-item color="tertiary" class="ion-margin-top" (click)="onSelectBank()">
+    <ion-item color="tertiary" class="ion-margin-top" routerLink="/transfer-to" (click)="goBank()">
+      <ion-avatar slot="start">
+        <img src="assets/imgs/promtpayicon.png">
+      </ion-avatar>
       <ion-label><b>บัญชีธนาคาร</b></ion-label>
     </ion-item>
   </ion-list>
