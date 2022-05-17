@@ -6,78 +6,90 @@
 
 <ion-content mode="ios">
   <ng-container>
-    <!-- <form [formGroup]="fg" (ngSubmit)="onSave()"> -->
-    <ion-list lines="none">
-      <ion-item color="tertiary" class="ion-margin-top">
-        <!-- <img *ngIf="data.logo" [src]="data.logo" class="logo-l circle center ion-margin-top"> -->
-        <img src="assets/imgs/defaultshop.png" class="logo-l circle center ion-margin-top">
-      </ion-item>
-      <ion-item color="tertiary" class="ion-text-center">
-        <ion-label class="ion-no-margin">
-          <h2><b>อานน บางสาน</b></h2>
-          <h2><b>Anon Bangsan</b></h2>
-        </ion-label>
-      </ion-item>
+    <form [formGroup]="fg">
+      <ion-list lines="none">
+        <ion-item color="tertiary" class="ion-margin-top">
+          <!-- <img *ngIf="data.logo" [src]="data.logo" class="logo-l circle center ion-margin-top"> -->
+          <img src="assets/imgs/defaultshop.png" class="logo-l circle center ion-margin-top">
+        </ion-item>
+        <ion-item color="tertiary" class="ion-text-center">
+          <ion-label class="ion-no-margin">
+            <h2><b>{{this.fg.get('FirstnameTH').value}} {{this.fg.get('LastnameTH').value}}</b></h2>
+            <h2><b>{{this.fg.get('FirstnameEN').value}} {{this.fg.get('LastnameEN').value}}</b></h2>
+          </ion-label>
+        </ion-item>
+
+
+
+        <ion-item color="tertiary" lines="none">
+          <ion-label>
+            <h2>จำนวนเงินที่จ่าย</h2>
+            <ion-text color="danger" *ngIf="isInvalid('Price')">
+              ข้อมูลไม่ถูกต้อง
+            </ion-text>
+          </ion-label>
+        </ion-item>
+        <ion-item color="tertiary" lines="full">
+          <ion-input type="number" id="customInputAmount" customInput="true" placeholder="ระบุยอดเงิน"
+            formControlName="Price" class="ion-text-center input-money" [disabled]="this.fg.get('M4').value"></ion-input>
+          <ion-label slot="end" class="ion-no-margin">
+            <h3>THB</h3>
+          </ion-label>
+        </ion-item>
+        <ion-item color="tertiary">
+          <ion-input id="customInputAmount" customInput="true" class="ion-text-center input-money"></ion-input>
+          <ion-label>
+            <h3>ใส่รหัสจ่ายเงิน</h3>
+          </ion-label>
+        </ion-item>
+
+        <ion-item color="tertiary" lines="full">
+          <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
+          <ion-label class="ion-no-margin">
+            <h3>{{this.fg.get('Bagname').value}}</h3>
+          </ion-label>
+          <ion-label slot="end" class="ion-no-margin">
+            <h3>เปลี่ยน</h3>
+          </ion-label>
+        </ion-item>
+
+        <ion-item color="tertiary" lines="full">
+          <ion-label class="ion-no-margin">
+            <h3>คูปอง {{this.fg.get('Coupon').value}}</h3>
+          </ion-label>
+          <ion-item [hidden]='hideList'>
+            <ion-label>Choose Country</ion-label>
+            <ion-select placeholder="Country" #countryList formControlName="Coupon">
+              <ion-select-option value="ส่วนลด 20 THB">ส่วนลด 20 THB</ion-select-option>
+              <ion-select-option value="ส่วนลด 50 THB">ส่วนลด 50 THB</ion-select-option>
+              <ion-select-option value="คูปองเฉยๆ">คูปองเฉยๆ</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-fab-button class="fab-small" size="small" color="danger">
+            <ion-icon color="light" name="add" (click)="selectcoupon()">
+            </ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </ion-list>
+
       <ion-item color="tertiary" lines="none">
         <ion-label for="customInputAmount">
-          <h2>จำนวนเงินที่จ่าย</h2>
+          <h2>เพิ่มเติม</h2>
         </ion-label>
-        <!-- <ion-label class="ion-text-end" color="danger">
-            <h2>
-              ข้อมูลไม่ถูกต้อง
-            </h2>
-          </ion-label> -->
       </ion-item>
-
       <ion-item color="tertiary" lines="full">
-        <ion-input id="customInputAmount" customInput="true" placeholder="ระบุยอดเงิน"
-          class="ion-text-center input-money"></ion-input>
-        <ion-label slot="end" class="ion-no-margin">
-          <h3>THB</h3>
-        </ion-label>
+        <ion-textarea type="text" placeholder="รายละเอียดเพิ่มเติม" rows="3" formControlName="Remark"></ion-textarea>
+        <!-- <ion-label class="ion-no-margin">
+          <h3>Option Detail</h3>
+        </ion-label> -->
       </ion-item>
-      <ion-item color="tertiary">
-        <ion-input id="customInputAmount" customInput="true" class="ion-text-center input-money"></ion-input>
-
-        <ion-label>
-          <h3>ใส่รหัสจ่ายเงิน</h3>
-        </ion-label>
-      </ion-item>
-
-      <ion-item color="tertiary" lines="full">
-        <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
-        <ion-label class="ion-no-margin">
-          <h3>Anon</h3>
-        </ion-label>
-        <ion-label slot="end" class="ion-no-margin">
-          <h3>เปลี่ยน</h3>
-        </ion-label>
-      </ion-item>
-
-      <ion-item color="tertiary" lines="full">
-        <ion-label class="ion-no-margin">
-          <h3>คูปอง</h3>
-        </ion-label>
-        <ion-fab-button class="fab-small" size="small" color="danger">
-          <ion-icon color="light" name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-item>
-    </ion-list>
-
-    <ion-item color="tertiary" lines="none">
-      <ion-label for="customInputAmount">
-        <h2>เพิ่มเติม</h2>
-      </ion-label>
-    </ion-item>
-    <ion-item color="tertiary" lines="full">
-      <ion-label class="ion-no-margin">
-        <h3>Option Detail</h3>
-      </ion-label>
-    </ion-item>
+    </form>
   </ng-container>
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">OK
-  </ion-button>
+  <form (ngSubmit)="onSave()">
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">OK
+    </ion-button>
+  </form>
 </ion-footer>
