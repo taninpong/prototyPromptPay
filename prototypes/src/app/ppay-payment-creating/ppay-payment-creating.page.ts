@@ -42,7 +42,7 @@ export class PpayPaymentCreatingPage implements OnInit {
       'LastnameTH': "บางสาน",
       'FirstnameEN': "Anon",
       'LastnameEN': "Bangsan",
-      'Bagname': "AnonBag",
+      'Bagname': "RuyBag",
       'Bankname': null,
     });
   }

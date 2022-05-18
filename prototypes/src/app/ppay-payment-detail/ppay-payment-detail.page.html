@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ppay-payment-detail</ion-title>
+    <ion-title *ngIf="this.fg.get('Type').value=='QR'">รายละเอียดจ่ายเงิน</ion-title>
+    <ion-title *ngIf="this.fg.get('Type').value=='PP'|| this.fg.get('Type').value=='Bank'">รายละเอียดโอน-จ่าย</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,7 +20,7 @@
             <ion-col size="6" class="ion-text-center">
               <div class="content-center">
                 <img class="icon circle transaction-img" src="assets/imgs/PromtPay.png"
-                  *ngIf="this.fg.get('Type').value=='QR'">
+                  *ngIf="this.fg.get('Type').value=='QR' ||  this.fg.get('Type').value=='PP'">
                 <img class="logo-l circle center ion-margin-top" src="assets/imgs/ktb.png"
                   *ngIf="this.fg.get('Type').value=='Bank'">
               </div>
@@ -87,7 +88,7 @@
         </ion-note>
       </ion-item>
       <ion-item color="tertiary" lines="none">
-        <ion-label for="customInputAmount" *ngIf="this.fg.get('Number').value==1">
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Number').value==1 || this.fg.get('Type').value=='PP'">
           <h2>เลขที่พร้อมเพย์ {{this.fg.get('Accountnumber').value}}</h2>
         </ion-label>
         <ion-label for="customInputAmount"

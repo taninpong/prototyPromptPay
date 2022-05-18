@@ -65,7 +65,7 @@ export class HomePromptPayPage implements OnInit {
     this.fg.get('Type').setValue('PP');
     this.fg.get('Price').setValue(0);
     this.fg.get('M3').setValue(false);
-    this.fg.get('M4').setValue(true);
+    this.fg.get('M4').setValue(false);
     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
     this.router.navigate(['/account-select'], param);
   }
@@ -82,15 +82,15 @@ export class HomePromptPayPage implements OnInit {
     this.fg.get('Number').setValue(7);
     this.fg.get('Type').setValue('PP');
     this.fg.get('Price').setValue(0);
-    this.fg.get('M3').setValue(true);
-    this.fg.get('M4').setValue(false);
+    this.fg.get('M3').setValue(false);
+    this.fg.get('M4').setValue(true);
     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
     this.router.navigate(['/account-select'], param);
   }
   gono8() {
     this.fg.get('Number').setValue(8);
     this.fg.get('Type').setValue('PP');
-    this.fg.get('Price').setValue(1000);
+    this.fg.get('Price').setValue(0);
     this.fg.get('M3').setValue(false);
     this.fg.get('M4').setValue(false);
     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };

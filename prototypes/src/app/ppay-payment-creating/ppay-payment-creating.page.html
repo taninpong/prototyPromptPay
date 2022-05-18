@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>จ่ายเงิน</ion-title>
+    <ion-title *ngIf="this.fg.get('Type').value=='QR'">จ่ายเงิน</ion-title>
+    <ion-title *ngIf="this.fg.get('Type').value=='PP'|| this.fg.get('Type').value=='Bank'">โอน-จ่าย</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -80,7 +81,7 @@
       </ion-list>
 
       <ion-item color="tertiary" lines="none">
-        <ion-label for="customInputAmount" *ngIf="this.fg.get('Number').value==1">
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Number').value==1 || this.fg.get('Type').value=='PP'">
           <h2>เลขที่พร้อมเพย์ {{this.fg.get('Accountnumber').value}}</h2>
         </ion-label>
         <ion-label for="customInputAmount"
