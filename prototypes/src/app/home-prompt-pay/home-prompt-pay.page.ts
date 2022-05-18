@@ -117,9 +117,9 @@ export class HomePromptPayPage implements OnInit {
   gono11() {
     this.fg.get('Number').setValue(11);
     this.fg.get('Type').setValue('Bank');
-    this.fg.get('Price').setValue(450);
+    this.fg.get('Price').setValue(0);
     this.fg.get('M3').setValue(true);
-    this.fg.get('M4').setValue(true);
+    this.fg.get('M4').setValue(false);
     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
     this.router.navigate(['/account-select'], param);
   }

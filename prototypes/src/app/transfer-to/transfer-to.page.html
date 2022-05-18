@@ -47,7 +47,7 @@
       </ion-item> -->
       <ion-item color="tertiary" lines="none">
         <ion-label>
-          <h2>ระบุเลขพร้อมเพย์</h2>
+          <h2>ระบุเลขบัญชีธนาคาร</h2>
           <ion-text color="danger" *ngIf="isInvalid('Accountnumber')">
             ข้อมูลไม่ถูกต้อง
           </ion-text>
@@ -72,7 +72,7 @@
         </ion-select>
       </ion-item>
 
-      <ion-item color="tertiary" lines="none">
+      <ion-item color="tertiary" lines="none" *ngIf="this.fg.get('Number').value != 11">
         <ion-label>
           <h2>จำนวนเงิน</h2>
           <ion-text color="danger" *ngIf="isInvalid('Price')">
@@ -82,8 +82,9 @@
       </ion-item>
       <ion-item color="tertiary" lines="none">
         <ion-input type="number" placeholder="ระบุจำนวนเงิน" formControlName="Price"
-          [disabled]="this.fg.get('M3').value"></ion-input>
+          [disabled]="this.fg.get('M3').value" *ngIf="this.fg.get('Number').value != 11"></ion-input>
       </ion-item>
+
 
       <!-- <ion-list lines="inset">
         <ion-list-header mode="md">

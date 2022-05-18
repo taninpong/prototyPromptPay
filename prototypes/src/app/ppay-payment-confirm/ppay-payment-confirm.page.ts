@@ -34,10 +34,10 @@ export class PpayPaymentConfirmPage implements OnInit {
             this.discount = 0;
           }
           if (this.fg.get('Number').value == 1) {
-            this.fg.get("Remark").setValue('โอนเงินพร้อมเพย์ไปยัง' + this.fg.get("Accountnumber").value);
+            // this.fg.get("Remark").setValue('โอนเงินพร้อมเพย์ไปยัง' + this.fg.get("Accountnumber").value);
           }
-          if (this.fg.get('Number').value == 2||this.fg.get('Number').value == 3||this.fg.get('Number').value == 4) {
-            this.fg.get("Remark").setValue('BillerId : 01055637789355 \n ref1 : 0036671388 \n ref2 : 000P8444111' );
+          if (this.fg.get('Number').value == 2 || this.fg.get('Number').value == 3 || this.fg.get('Number').value == 4) {
+            // this.fg.get("Remark").setValue('BillerId : 01055637789355 \n ref1 : 0036671388 \n ref2 : 000P8444111' );
           }
           this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
         }
@@ -74,6 +74,7 @@ export class PpayPaymentConfirmPage implements OnInit {
     } else {
       this.discount = 0;
     }
+    this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
   }
 
   onSave() {

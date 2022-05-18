@@ -10,7 +10,13 @@
       <ion-list lines="none">
         <ion-item color="tertiary" class="ion-margin-top">
           <!-- <img *ngIf="data.logo" [src]="data.logo" class="logo-l circle center ion-margin-top"> -->
-          <img src="assets/imgs/defaultshop.png" class="logo-l circle center ion-margin-top">
+          <!-- <img src="assets/imgs/defaultshop.png" class="logo-l circle center ion-margin-top"> -->
+          <img class="logo-l circle center ion-margin-top" src="assets/imgs/PromtPay.png"
+            *ngIf="this.fg.get('Type').value=='PP' || this.fg.get('Number').value==1">
+          <img class="logo-l circle center ion-margin-top" src="assets/imgs/PromtPay.png"
+            *ngIf="(this.fg.get('Type').value=='QR' && (this.fg.get('Number').value==2||this.fg.get('Number').value==3||this.fg.get('Number').value==4))">
+          <img class="logo-l circle center ion-margin-top" src="assets/imgs/ktb.png"
+            *ngIf="this.fg.get('Type').value=='Bank'">
         </ion-item>
         <ion-item color="tertiary" class="ion-text-center">
           <ion-label class="ion-no-margin">
@@ -31,7 +37,8 @@
         </ion-item>
         <ion-item color="tertiary" lines="full">
           <ion-input type="number" id="customInputAmount" customInput="true" placeholder="ระบุยอดเงิน"
-            formControlName="Price" class="ion-text-center input-money" [disabled]="this.fg.get('M4').value"></ion-input>
+            formControlName="Price" class="ion-text-center input-money" [disabled]="this.fg.get('M4').value">
+          </ion-input>
           <ion-label slot="end" class="ion-no-margin">
             <h3>THB</h3>
           </ion-label>
@@ -72,6 +79,22 @@
         </ion-item>
       </ion-list>
 
+      <ion-item color="tertiary" lines="none">
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Number').value==1">
+          <h2>เลขที่พร้อมเพย์ {{this.fg.get('Accountnumber').value}}</h2>
+        </ion-label>
+        <ion-label for="customInputAmount"
+          *ngIf="this.fg.get('Number').value==2||this.fg.get('Number').value==3||this.fg.get('Number').value==4">
+          <div>
+            <h2>BillerId : 01055637789355 </h2>
+            <h2>ref1 : 0036671388 </h2>
+            <h2>ref2 : 000P8444111</h2>
+          </div>
+        </ion-label>
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
+          <h2>เลขที่บัญชี {{this.fg.get('Accountnumber').value}}</h2>
+        </ion-label>
+      </ion-item>
       <ion-item color="tertiary" lines="none">
         <ion-label for="customInputAmount">
           <h2>เพิ่มเติม</h2>

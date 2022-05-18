@@ -23,6 +23,9 @@ export class PpayPaymentCreatingPage implements OnInit {
           console.log("xxx", this.data);
           this.fg.patchValue(this.data);
           console.log(this.fg.value);
+          if (this.fg.get('Number').value == 1 || this.fg.get('Number').value == 2 || this.fg.get('Number').value == 3 || this.fg.get('Number').value == 4) {
+            this.fg.get("Accountnumber").setValue('0874561545');
+          }
         }
       });
     }
@@ -54,9 +57,7 @@ export class PpayPaymentCreatingPage implements OnInit {
   onSave() {
     console.log(this.fg.value);
 
-    if (this.fg.get('Number').value == 1 || this.fg.get('Number').value == 2 || this.fg.get('Number').value == 3 || this.fg.get('Number').value == 4) {
-      this.fg.get("Accountnumber").setValue('0874561545');
-    }
+
     if (this.isFirstTime) {
       this.isFirstTime = false;
     }
