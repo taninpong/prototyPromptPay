@@ -43,6 +43,7 @@ export class PpayPaymentDetailPage implements OnInit {
       'Bagname': null,
       'total': 0,
       'Bankname': null,
+      'BankLogo': null,
     });
   }
 

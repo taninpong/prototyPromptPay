@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { IonSelect } from '@ionic/angular';
 
@@ -14,7 +14,7 @@ export class PpayPaymentConfirmPage implements OnInit {
 
   data: any;
   discount: number = 0;
-  fee: number = 15;
+  fee: number = 0;
   hideList = true;
 
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
@@ -24,23 +24,23 @@ export class PpayPaymentConfirmPage implements OnInit {
         if (value) {
           this.data = JSON.parse(value);
           console.log("xxx", this.data);
+          console.log("data.Coupon", this.data.Coupon);
           this.fg.patchValue(this.data);
           console.log(this.fg.value);
-          if (this.fg.get('Coupon').value == 'ส่วนลด 20 THB') {
-            this.discount = 20;
-          } else if (this.fg.get('Coupon').value == 'ส่วนลด 50 THB') {
-            this.discount = 50;
-          } else {
-            this.discount = 0;
-          }
           if (this.fg.get('Number').value == 1) {
             // this.fg.get("Remark").setValue('โอนเงินพร้อมเพย์ไปยัง' + this.fg.get("Accountnumber").value);
           }
           if (this.fg.get('Number').value == 2 || this.fg.get('Number').value == 3 || this.fg.get('Number').value == 4) {
             // this.fg.get("Remark").setValue('BillerId : 01055637789355 \n ref1 : 0036671388 \n ref2 : 000P8444111' );
           }
-          this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
         }
+        this.fg.setControl('Coupon', this.fb.array(this.data.Coupon || []));
+        this.discountprice();
+        this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
+        if (this.fg.get('total').value < 0) {
+          this.fg.get('total').setValue(0);
+        }
+        console.log(this.fg.value);
       });
     }
     this.fg = this.fb.group({
@@ -50,7 +50,7 @@ export class PpayPaymentConfirmPage implements OnInit {
       'Price': 0,
       'M3': null,
       'M4': null,
-      'Coupon': null,
+      'Coupon': this.fb.array([]),
       'Remark': null,
       'FirstnameTH': null,
       'LastnameTH': null,
@@ -58,6 +58,7 @@ export class PpayPaymentConfirmPage implements OnInit {
       'LastnameEN': null,
       'Bagname': null,
       'total': 0,
+      'BankLogo': null,
       'Bankname': null,
     });
   }
@@ -65,17 +66,17 @@ export class PpayPaymentConfirmPage implements OnInit {
   ngOnInit() {
   }
 
-  selectcoupon() {
-    this.countrySelectRef.open();
-    if (this.fg.get('Coupon').value == 'ส่วนลด 20 THB') {
-      this.discount = 20;
-    } else if (this.fg.get('Coupon').value == 'ส่วนลด 50 THB') {
-      this.discount = 50;
-    } else {
-      this.discount = 0;
-    }
-    this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
-  }
+  // selectcoupon() {
+  //   this.countrySelectRef.open();
+  //   if (this.fg.get('Coupon').value == 'ส่วนลด 20 THB') {
+  //     this.discount = 20;
+  //   } else if (this.fg.get('Coupon').value == 'ส่วนลด 50 THB') {
+  //     this.discount = 50;
+  //   } else {
+  //     this.discount = 0;
+  //   }
+  //   this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
+  // }
 
   onSave() {
     if (this.fg.valid) {
@@ -84,5 +85,16 @@ export class PpayPaymentConfirmPage implements OnInit {
     }
   }
 
+  get Coupon(): FormArray {
+    return this.fg.get('Coupon') as FormArray;
+  };
+
+  discountprice() {
+    this.fg.get('Coupon').value.forEach(element => {
+      if (element.checkuse == true) {
+        this.discount += element.value;
+      }
+    });
+  }
 
 }

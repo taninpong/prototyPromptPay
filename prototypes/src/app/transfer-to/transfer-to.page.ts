@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { NavController, NavParams } from '@ionic/angular';
+import { ModalController, NavController, NavParams } from '@ionic/angular';
+import { AccountBankSelectPage } from '../account-bank-select/account-bank-select.page';
 
 @Component({
   selector: 'app-transfer-to',
@@ -22,7 +23,9 @@ export class TransferToPage implements OnInit {
     { id: "BAY", name: "กรุงศรีอยุธยา", logo: "assets/imgs/bay.png" },
     { id: "GSB", name: "ออมสิน", logo: "assets/imgs/gsb.png" },
   ];
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  displayBankName: any;
+
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, public modalController: ModalController) {
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
         let value = params["data"];
@@ -43,6 +46,7 @@ export class TransferToPage implements OnInit {
       'M3': null,
       'M4': null,
       'Bankname': null,
+      'BankLogo': null,
     });
 
 
@@ -60,7 +64,7 @@ export class TransferToPage implements OnInit {
     }
     if (this.fg.valid) {
       console.log(this.fg.value);
-      
+
       console.log("1111");
       let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
 
@@ -80,5 +84,18 @@ export class TransferToPage implements OnInit {
 
   public isChecked(value): boolean {
     return this.fg.get("id").value == value.id;
+  }
+
+  async openSelectBankDialog() {
+    const modal = await this.modalController.create({
+      component: AccountBankSelectPage,
+      componentProps: {
+        'confirmFunction': (note: string, logo: any) => {
+          this.fg.get("Bankname").setValue(note);
+          this.fg.get("BankLogo").setValue(logo);
+        }
+      }
+    });
+    return await modal.present();
   }
 }

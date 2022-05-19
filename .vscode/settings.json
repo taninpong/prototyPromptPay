@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/7874dd6f-3591-4b3a-84d8-9f42a96ccddd/resourceGroups/p-demo/providers/Microsoft.Web/sites/demo-prototype-promptpay",
+    "appService.deploySubpath": "resource"
+}

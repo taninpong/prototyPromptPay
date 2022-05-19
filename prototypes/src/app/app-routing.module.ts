@@ -99,6 +99,10 @@ const routes: Routes = [
     path: 'ppay-payment-detail',
     loadChildren: () => import('./ppay-payment-detail/ppay-payment-detail.module').then( m => m.PpayPaymentDetailPageModule)
   },
+  {
+    path: 'account-bank-select',
+    loadChildren: () => import('./account-bank-select/account-bank-select.module').then( m => m.AccountBankSelectPageModule)
+  },
 
 
 ];

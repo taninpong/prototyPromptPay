@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { IonSelect } from '@ionic/angular';
+import { AlertController, IonSelect } from '@ionic/angular';
 
 @Component({
   selector: 'app-ppay-payment-creating',
@@ -14,7 +14,8 @@ export class PpayPaymentCreatingPage implements OnInit {
   data: any;
   public isFirstTime: boolean = true;
   hideList = true;
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  checkusecoupon = false;
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, public alertController: AlertController) {
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
         let value = params["data"];
@@ -22,11 +23,13 @@ export class PpayPaymentCreatingPage implements OnInit {
           this.data = JSON.parse(value);
           console.log("xxx", this.data);
           this.fg.patchValue(this.data);
-          console.log(this.fg.value);
           if (this.fg.get('Number').value == 1 || this.fg.get('Number').value == 2 || this.fg.get('Number').value == 3 || this.fg.get('Number').value == 4) {
             this.fg.get("Accountnumber").setValue('0874561545');
           }
         }
+
+        console.log(this.fg.value);
+
       });
     }
     this.fg = this.fb.group({
@@ -36,7 +39,7 @@ export class PpayPaymentCreatingPage implements OnInit {
       'Price': 0,
       'M3': null,
       'M4': null,
-      'Coupon': null,
+      'Coupon': this.fb.array([]),
       'Remark': null,
       'FirstnameTH': "อานน",
       'LastnameTH': "บางสาน",
@@ -44,6 +47,7 @@ export class PpayPaymentCreatingPage implements OnInit {
       'LastnameEN': "Bangsan",
       'Bagname': "RuyBag",
       'Bankname': null,
+      'BankLogo': null,
     });
   }
 
@@ -54,17 +58,43 @@ export class PpayPaymentCreatingPage implements OnInit {
     this.countrySelectRef.open();
   }
 
-  onSave() {
-    console.log(this.fg.value);
-
-
+  async onSave() {
     if (this.isFirstTime) {
       this.isFirstTime = false;
     }
-
     if (this.fg.valid) {
-      let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-      this.router.navigate(['/ppay-payment-confirm'], param);
+      if (this.fg.get('Coupon').value.length == 0) {
+        const alert = await this.alertController.create({
+          header: 'แจ้งเตือน!',
+          message: 'คุณจะใช้คูปองที่มีหรือไม่',
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              cssClass: 'secondary',
+              handler: (blah) => {
+                this.checkusecoupon = false;
+                console.log(this.checkusecoupon);
+                let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+                this.router.navigate(['/ppay-payment-confirm'], param);
+              }
+            }, {
+              text: 'Okay',
+              handler: () => {
+                this.checkusecoupon = true;
+                console.log(this.checkusecoupon);
+                this.usecoupon();
+                let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+                this.router.navigate(['/ppay-payment-confirm'], param);
+              }
+            }
+          ]
+        });
+        await alert.present();
+      } else {
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/ppay-payment-confirm'], param);
+      }
     }
   }
 
@@ -73,4 +103,16 @@ export class PpayPaymentCreatingPage implements OnInit {
     return ctrl.invalid && !this.isFirstTime;
   }
 
+  usecoupon() {
+    var coupons = [{ 'id': 1, 'name': 'ส่วนลด 20 THB', 'value': 20, checkuse: true }, { 'id': 2, 'name': 'ส่วนลด 50 THB', 'value': 50, checkuse: true }, { 'id': 3, 'name': 'ส่งฟรี', 'value': 0, checkuse: false }];
+    this.fg.setControl('Coupon', this.fb.array(coupons || []));
+  }
+
+  deletecoupon(id: number) {
+    this.Coupon.removeAt(id);
+  }
+
+  get Coupon(): FormArray {
+    return this.fg.get('Coupon') as FormArray;
+  };
 }
