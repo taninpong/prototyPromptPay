@@ -103,6 +103,10 @@ const routes: Routes = [
     path: 'account-bank-select',
     loadChildren: () => import('./account-bank-select/account-bank-select.module').then( m => m.AccountBankSelectPageModule)
   },
+  {
+    path: 'account-bank-select2',
+    loadChildren: () => import('./account-bank-select2/account-bank-select2.module').then( m => m.AccountBankSelect2PageModule)
+  },
 
 
 ];

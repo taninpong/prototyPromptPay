@@ -6,7 +6,7 @@
 
 <ion-content mode="ios" color="tertiary">
 
-  <form [formGroup]="fg" (ngSubmit)="onSave()">
+  <form [formGroup]="fg">
     <ion-list lines="inset">
       <ion-list-header mode="md">
         <ion-label>เลือกธนาคาร</ion-label>
@@ -21,24 +21,21 @@
             <h3>{{ item.id }}</h3>
           </ion-text>
         </ion-label>
-        <img width="20" height="20" class="qr"
-          [src]="isChecked(item) ? 'assets/imgs/correctblue.png' : 'assets/imgs/correctgray.png'" />
+
+        <ion-label slot="end" (click)="onSave(item)">เลือก</ion-label>
+        <!-- <img width="20" height="20" class="qr"
+          [src]="isChecked(item) ? 'assets/imgs/correctblue.png' : 'assets/imgs/correctgray.png'" /> -->
       </ion-item>
     </ion-list>
-
   </form>
 
 </ion-content>
-
 
 <ion-footer class="ion-no-border">
   <!-- <form (ngSubmit)="onSave()"> -->
   <ion-item>
     <ion-label slot="end" id="app-form-submit" color="dark" ion-button expand="full" no-margin (click)="CloseDialog()">
-      ยกเลิก
-    </ion-label>
-    <ion-label slot="end" id="app-form-submit" color="primary" (click)="onSave()" ion-button expand="full" no-margin>
-      ตกลง
+      ปิด
     </ion-label>
   </ion-item>
   <!-- </form> -->

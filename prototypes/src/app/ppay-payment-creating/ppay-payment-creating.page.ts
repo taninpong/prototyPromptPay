@@ -69,7 +69,7 @@ export class PpayPaymentCreatingPage implements OnInit {
           message: 'คุณจะใช้คูปองที่มีหรือไม่',
           buttons: [
             {
-              text: 'Cancel',
+              text: 'ไม่ใช้',
               role: 'cancel',
               cssClass: 'secondary',
               handler: (blah) => {
@@ -79,7 +79,7 @@ export class PpayPaymentCreatingPage implements OnInit {
                 this.router.navigate(['/ppay-payment-confirm'], param);
               }
             }, {
-              text: 'Okay',
+              text: 'ใช้',
               handler: () => {
                 this.checkusecoupon = true;
                 console.log(this.checkusecoupon);

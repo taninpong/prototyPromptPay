@@ -60,6 +60,8 @@
           <ion-icon name="caret-down-outline"></ion-icon>
         </ion-text>
       </ion-item>
+
+
       <!-- xxxs
       <ion-item color="tertiary" lines="none">
         <ion-label>กรุณาเลือก</ion-label>
@@ -78,7 +80,8 @@
       <ion-item color="tertiary" lines="none">
         <ion-input placeholder="ระบุเลขบัญชีธนาคาร" formControlName="Accountnumber"></ion-input>
       </ion-item>
-      <ion-item color="tertiary" lines="none" *ngIf="this.fg.get('Number').value != 11 ">
+      <ion-item color="tertiary" lines="none"
+        *ngIf="(this.fg.get('Number').value != 11  && this.fg.get('Number').value != 14)">
         <ion-label>
           <h2>จำนวนเงิน</h2>
           <ion-text color="danger" *ngIf="isInvalid('Price')">
@@ -88,7 +91,8 @@
       </ion-item>
       <ion-item color="tertiary" lines="none">
         <ion-input type="number" placeholder="ระบุจำนวนเงิน" formControlName="Price"
-          [disabled]="this.fg.get('M3').value" *ngIf="this.fg.get('Number').value != 11"></ion-input>
+          [disabled]="this.fg.get('M3').value"
+          *ngIf="(this.fg.get('Number').value != 11 && this.fg.get('Number').value != 14)"></ion-input>
       </ion-item>
 
 

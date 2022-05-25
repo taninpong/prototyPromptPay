@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ModalController, NavController, NavParams } from '@ionic/angular';
 import { AccountBankSelectPage } from '../account-bank-select/account-bank-select.page';
+import { AccountBankSelect2Page } from '../account-bank-select2/account-bank-select2.page';
 
 @Component({
   selector: 'app-transfer-to',
@@ -87,15 +88,28 @@ export class TransferToPage implements OnInit {
   }
 
   async openSelectBankDialog() {
-    const modal = await this.modalController.create({
-      component: AccountBankSelectPage,
-      componentProps: {
-        'confirmFunction': (note: string, logo: any) => {
-          this.fg.get("Bankname").setValue(note);
-          this.fg.get("BankLogo").setValue(logo);
+    if (this.fg.get('Number').value == 12||this.fg.get('Number').value == 13||this.fg.get('Number').value == 14) {
+      const modal = await this.modalController.create({
+        component: AccountBankSelect2Page,
+        componentProps: {
+          'confirmFunction': (note: string, logo: any) => {
+            this.fg.get("Bankname").setValue(note);
+            this.fg.get("BankLogo").setValue(logo);
+          }
         }
-      }
-    });
-    return await modal.present();
+      });
+      return await modal.present();
+    } else {
+      const modal = await this.modalController.create({
+        component: AccountBankSelectPage,
+        componentProps: {
+          'confirmFunction': (note: string, logo: any) => {
+            this.fg.get("Bankname").setValue(note);
+            this.fg.get("BankLogo").setValue(logo);
+          }
+        }
+      });
+      return await modal.present();
+    }
   }
 }
