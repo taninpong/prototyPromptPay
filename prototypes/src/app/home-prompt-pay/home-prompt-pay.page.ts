@@ -24,6 +24,16 @@ export class HomePromptPayPage implements OnInit {
 
   }
 
+  gono0() {
+    this.fg.get('Number').setValue(0);
+    this.fg.get('Type').setValue('QR');
+    this.fg.get('Price').setValue(0);
+    this.fg.get('M3').setValue(false);
+    this.fg.get('M4').setValue(false);
+    let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+    this.router.navigate(['/ppay-payment-creating'], param);
+  }
+
   gono1() {
     this.fg.get('Number').setValue(1);
     this.fg.get('Type').setValue('QR');

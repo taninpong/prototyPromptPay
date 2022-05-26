@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-ppay-payment-detail',
@@ -11,7 +11,6 @@ export class PpayPaymentDetailPage implements OnInit {
   data: any;
   public fg: FormGroup;
   discount: number = 0;
-  fee: number = 15;
   hideList = true;
   date = new Date;
   rand = 0;
@@ -23,12 +22,14 @@ export class PpayPaymentDetailPage implements OnInit {
           this.data = JSON.parse(value);
           console.log("xxx", this.data);
           this.fg.patchValue(this.data);
+          this.fg.setControl('Coupon', this.fb.array(this.data.Coupon || []));
+
         }
       });
       this.rand = Math.floor(Math.random() * (9999 - 9000 + 1)) + 9000;
     }
     this.fg = this.fb.group({
-      'Accountnumber': [null, [Validators.required, Validators.minLength(10), Validators.maxLength(15), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'Accountnumber': [null, [Validators.minLength(10), Validators.maxLength(15), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
       'Number': null,
       'Type': null,
       'Price': 0,
@@ -44,6 +45,8 @@ export class PpayPaymentDetailPage implements OnInit {
       'total': 0,
       'Bankname': null,
       'BankLogo': null,
+      'Fee': 0,
+      'Discount': 0,
     });
   }
 
@@ -52,7 +55,13 @@ export class PpayPaymentDetailPage implements OnInit {
 
   gohome() {
     this.router.navigate(['/'], { replaceUrl: true });
+  }
 
+  goeslip() {
+    if (this.fg.valid) {
+      let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+      this.router.navigate(['/ppay-payment-eslip'], param);
+    }
   }
 
   // public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }

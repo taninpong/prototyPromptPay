@@ -31,11 +31,14 @@ export class TransferToPage implements OnInit {
       this.route.queryParams.subscribe(params => {
         let value = params["data"];
         if (value) {
+          this.fg.get('Accountnumber').setValue('');
           this.data = JSON.parse(value);
           console.log("xxx", this.data);
           this.fg.patchValue(this.data);
           console.log(this.fg.value);
-
+          if (this.fg.get('Type').value == 'Bank') {
+            this.openSelectBankDialog();
+          }
         }
       });
     }
@@ -49,7 +52,6 @@ export class TransferToPage implements OnInit {
       'Bankname': null,
       'BankLogo': null,
     });
-
 
   }
 
@@ -88,7 +90,7 @@ export class TransferToPage implements OnInit {
   }
 
   async openSelectBankDialog() {
-    if (this.fg.get('Number').value == 12||this.fg.get('Number').value == 13||this.fg.get('Number').value == 14) {
+    if (this.fg.get('Number').value == 12 || this.fg.get('Number').value == 13 || this.fg.get('Number').value == 14) {
       const modal = await this.modalController.create({
         component: AccountBankSelect2Page,
         componentProps: {

@@ -40,11 +40,13 @@ export class PpayPaymentConfirmPage implements OnInit {
         if (this.fg.get('total').value < 0) {
           this.fg.get('total').setValue(0);
         }
+        this.fg.get('Discount').setValue(this.discount);
+
         console.log(this.fg.value);
       });
     }
     this.fg = this.fb.group({
-      'Accountnumber': [null, [Validators.required, Validators.minLength(10), Validators.maxLength(15), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'Accountnumber': [null, [Validators.minLength(10), Validators.maxLength(15), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
       'Number': null,
       'Type': null,
       'Price': 0,
@@ -60,6 +62,8 @@ export class PpayPaymentConfirmPage implements OnInit {
       'total': 0,
       'BankLogo': null,
       'Bankname': null,
+      'Fee': 0,
+      'Discount': 0,
     });
   }
 
@@ -81,7 +85,7 @@ export class PpayPaymentConfirmPage implements OnInit {
   onSave() {
     if (this.fg.valid) {
       let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-      this.router.navigate(['/ppay-payment-detail'], param);
+      this.router.navigate(['/ppay-payment-success'], param);
     }
   }
 
