@@ -1,0 +1,206 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ใบเสร็จ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios" class="transaction ion-padding-top" mode="ios">
+  <ng-container>
+    <form [formGroup]="fg">
+      <!-- <ion-list lines="none"> -->
+      <ion-item class="ion-text-center" color="tertiary" lines="none">
+        <ion-grid class="ion-padding">
+          <ion-row class="ion-text-center ion-align-items-center">
+            <!-- <ion-col size="6" class="ion-text-center">
+              <div class="content-center">
+                <img class="icon transaction-img" src="assets/imgs/changewallet.png">
+              </div>
+              <ion-icon class="right-arrow" name="chevron-forward-sharp"></ion-icon>
+            </ion-col> -->
+            <ion-col size="12" class="ion-text-center">
+              <div class="content-center">
+                <img class="icon circle transaction-img" src="assets/imgs/PromtPay.png"
+                  *ngIf="this.fg.get('Type').value=='QRP'||this.fg.get('Type').value=='QRB'||  this.fg.get('Type').value=='PP'">
+                <img class="logo-l circle center ion-margin-top" [src]="this.fg.get('BankLogo').value"
+                  *ngIf="this.fg.get('Type').value=='Bank'">
+                <img class="logo-l circle center ion-margin-top" src="assets/imgs/dogs.jpg"
+                  *ngIf="this.fg.get('Type').value=='PA'">
+                <img class="logo-l circle center ion-margin-top" src="assets/imgs/BeedaDelivery.jpg"
+                  *ngIf="this.fg.get('Type').value=='BA'">
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-text-center ion-align-items-center">
+            <!-- <ion-col size="6" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap">
+                <h3><b> ทนวย คงควรคอย</b></h3>
+              </ion-label>
+            </ion-col> -->
+            <ion-col size="12" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap">
+                <h3><b> {{this.fg.get('FirstnameTH').value}} {{this.fg.get('LastnameTH').value}}</b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-text-center ion-align-items-center">
+            <!-- <ion-col size="6" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap">
+                <h3> {{this.fg.get('Bagname').value}}</h3>
+              </ion-label>
+            </ion-col>  -->
+            <ion-col size="12" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap">
+                <h3 *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'"><b>
+                    {{this.fg.get('FirstnameEN').value}} {{this.fg.get('LastnameEN').value}}</b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item color="tertiary" lines="full">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-label>
+                <h3 class="line-height2"><b>รายละเอียดการจ่ายเงิน</b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-label>
+                <h3 class="line-height2">จำนวนเงิน</h3>
+              </ion-label>
+            </ion-col>
+            <ion-col class="ion-no-padding ion-text-right">
+              <ion-label>
+                <h3>{{ this.fg.get('Price').value}}.00 <small>THB</small></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-label>
+                <h3 class="line-height2">ค่าธรรมเนียม</h3>
+              </ion-label>
+            </ion-col>
+            <ion-col class="ion-no-padding ion-text-right">
+              <ion-label>
+                <h3>{{this.fg.get('Fee').value}}.00 <small>THB</small></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-label>
+                <h3 class="line-height2">ส่วนลด</h3>
+              </ion-label>
+            </ion-col>
+            <ion-col class="ion-no-padding ion-text-right">
+              <ion-label>
+                <h3>-{{this.fg.get('Discount').value}}.00 <small>THB</small></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-label>
+                <h3 class="line-height2">รวมทั้งหมด</h3>
+              </ion-label>
+            </ion-col>
+            <ion-col class="ion-no-padding ion-text-right">
+              <ion-label color="danger">
+                <h3><b>{{this.fg.get('total').value}}.00 <small>THB</small></b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item color="tertiary" lines="full">
+        <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
+        <ion-label class="ion-no-margin">
+          <h3>{{this.fg.get('Bagname').value}}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="none">
+        <ion-label class="ion-no-margin">
+          <h3>คูปอง </h3>
+        </ion-label>
+      </ion-item>
+      <div formArrayName="Coupon">
+        <ion-list *ngFor="let item of fg.get('Coupon')['controls']; let i=index">
+          <ion-item color="tertiary" lines="full" class="ion-no-padding" *ngIf="item.value.checkuse == true">
+            <ion-col class="ion-no-padding" size="1">
+              <img class="logo-s circle" src="assets/imgs/coupon-small-red.png">
+            </ion-col>
+            <ion-col class="ion-padding">
+              <ion-label style="color: black;">
+                <h3 class="line-height2">{{item.value.name}}</h3>
+              </ion-label>
+            </ion-col>
+            <ion-col class="ion-padding ion-text-right">
+            </ion-col>
+          </ion-item>
+        </ion-list>
+        <ion-item color="tertiary" lines="none">
+          <ion-avatar slot="start" class="avatar-m">
+            <img class="non-circle" src="assets/imgs/qrcode.png" />
+          </ion-avatar>
+          <ion-label>
+            <h2><b>รหัสอ้างอิง : STK{{rand}}</b></h2>
+            <ion-text color="medium">
+              <h3>วันที่ {{date | date:'dd/MM/yyyy (H:mm)' }}</h3>
+            </ion-text>
+          </ion-label>
+          <ion-note>
+            <ion-label>
+              <h3>
+                <a class="link-medium" [href]="data.shareUrl">
+                  <ion-icon name="share-outline"></ion-icon>&nbsp;แชร์
+                </a>
+              </h3>
+            </ion-label>
+          </ion-note>
+        </ion-item>
+      </div>
+      <!-- </ion-list> -->
+
+      <ion-item color="tertiary" lines="none" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
+        <ion-label for="customInputAmount">
+          <h2><b>เพิ่มเติม</b></h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="none" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRP' || this.fg.get('Type').value=='PP'">
+          <h2>เลขที่พร้อมเพย์ {{this.fg.get('Accountnumber').value}}</h2>
+        </ion-label>
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
+          <div>
+            <h2>BillerId : 01055637789355 </h2>
+            <h2>ref1 : 0036671388 </h2>
+            <h2>ref2 : 000P8444111</h2>
+          </div>
+        </ion-label>
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
+          <h2>เลขที่บัญชี {{this.fg.get('Accountnumber').value}}</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="none">
+        <ion-label for="customInputAmount">
+          <h2><b>หมายเหตุ</b></h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="full">
+        <ion-textarea type="text" placeholder="" rows="3" formControlName="Remark" [disabled]="true"></ion-textarea>
+      </ion-item>
+    </form>
+  </ng-container>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit" (click)="gohome()">
+    GoHome
+  </ion-button>
+</ion-footer>

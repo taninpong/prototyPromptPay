@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FormReceiveDataPageRoutingModule } from './form-receive-data-routing.module';
+import { PpayPaymentSuccessPageRoutingModule } from './ppay-payment-success-routing.module';
 
-import { FormReceiveDataPage } from './form-receive-data.page';
+import { PpayPaymentSuccessPage } from './ppay-payment-success.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { FormReceiveDataPage } from './form-receive-data.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    FormReceiveDataPageRoutingModule
+    PpayPaymentSuccessPageRoutingModule
   ],
-  declarations: [FormReceiveDataPage]
+  declarations: [PpayPaymentSuccessPage]
 })
-export class FormReceiveDataPageModule {}
+export class PpayPaymentSuccessPageModule {}

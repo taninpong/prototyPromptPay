@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FormReceiveDataPageRoutingModule } from './form-receive-data-routing.module';
+import { ListpromptpayPageRoutingModule } from './listpromptpay-routing.module';
 
-import { FormReceiveDataPage } from './form-receive-data.page';
+import { ListpromptpayPage } from './listpromptpay.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { FormReceiveDataPage } from './form-receive-data.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    FormReceiveDataPageRoutingModule
+    ListpromptpayPageRoutingModule
   ],
-  declarations: [FormReceiveDataPage]
+  declarations: [ListpromptpayPage]
 })
-export class FormReceiveDataPageModule {}
+export class ListpromptpayPageModule {}
