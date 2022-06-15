@@ -106,8 +106,6 @@ export class PpayPaymentCreatingPage implements OnInit {
                 this.checkusecoupon = true;
                 console.log(this.checkusecoupon);
                 this.usecoupon();
-                let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-                this.router.navigate(['/ppay-payment-confirm'], param);
               }
             }
           ]
@@ -115,7 +113,6 @@ export class PpayPaymentCreatingPage implements OnInit {
         await alert.present();
       } else {
         let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-        this.router.navigate(['/ppay-payment-confirm'], param);
       }
     }
   }
@@ -126,7 +123,7 @@ export class PpayPaymentCreatingPage implements OnInit {
   }
 
   usecoupon() {
-    var coupons = [{ 'id': 1, 'name': 'ส่วนลด 20 THB', 'value': 20, checkuse: true }, { 'id': 2, 'name': 'ส่วนลด 50 THB', 'value': 50, checkuse: true }, { 'id': 3, 'name': 'ส่งฟรี', 'value': 0, checkuse: false }];
+    var coupons = [{ 'id': 1, 'name': 'x1 คูปองส่วนลด 20 บาท', 'value': 20, checkuse: true }, { 'id': 2, 'name': 'x1 คูปองส่วนลด 50 บาท', 'value': 50, checkuse: true }, { 'id': 3, 'name': 'x1 คูปองส่งฟรี', 'value': 0, checkuse: false }];
     this.fg.setControl('Coupon', this.fb.array(coupons || []));
     this.discount = 0;
     this.sumcouponprice();
@@ -171,5 +168,10 @@ export class PpayPaymentCreatingPage implements OnInit {
     console.log(ev.detail);
 
   }
+
+  openOptionDlg(){
+    this.router.navigate(['/option-dialog-template']);
+  }
+
 
 }
