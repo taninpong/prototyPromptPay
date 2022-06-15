@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div>
+  <div *ngIf="this.fg.get('Type').value=='alipay'">
     <ion-list class="ion-margin-top" lines="full">
       <ion-item color="tertiary" lines="none">
         <ion-label for="customInputAmount">
@@ -16,7 +16,7 @@
         <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
         <ion-col class="ion-no-padding">
           <ion-label color="medium">
-            <h3 class="line-height2">this.fg.get('Bagname').value}}.....</h3>
+            <h3 class="line-height2">Raybag.....</h3>
           </ion-label>
         </ion-col>
         <ion-col class="ion-no-padding ion-text-right">
@@ -86,7 +86,7 @@
       </ion-item>
       <ion-item color="tertiary" lines="full">
         <ion-label>
-          <h2>Ref. <ion-text color="medium">2345678901</ion-text>
+          <h2>Ref. <ion-text color="medium" >2345678901</ion-text>
           </h2>
         </ion-label>
         <!-- <ion-label>
@@ -108,12 +108,12 @@
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" lines="none">
-        <ion-textarea type="text" placeholder="รายละเอียดเพิ่มเติม" rows="1"></ion-textarea>
+        <ion-textarea type="text"  rows="1">{{this.fg.get('Remark').value}}</ion-textarea>
       </ion-item>
     </ion-list>
   </div>
 
-  <div>
+  <div *ngIf="this.fg.get('Type').value=='crypto'">
     <ion-list class="ion-margin-top" lines="full">
       <ion-item color="tertiary" lines="none">
         <ion-label for="customInputAmount">
@@ -215,8 +215,8 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <!-- <form (ngSubmit)="onSave()"> -->
-  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full">ตกลง
+  <form (ngSubmit)="onSave()">
+  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง
   </ion-button>
-  <!-- </form> -->
+  </form>
 </ion-footer>

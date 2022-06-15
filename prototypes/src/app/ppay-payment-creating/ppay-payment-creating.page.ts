@@ -45,9 +45,15 @@ export class PpayPaymentCreatingPage implements OnInit {
             this.fg.get('FirstnameTH').setValue("โอ้วแม่สาวน้อย");
             this.fg.get('LastnameTH').setValue("ไปกินติมไหม");
           }
+          if (this.fg.get('Type').value == 'alipay') {
+            this.fg.get('FirstnameTH').setValue("Alipay");
+            this.fg.get('LastnameTH').setValue("");
+            this.fg.get('FirstnameEN').setValue("");
+            this.fg.get('LastnameEN').setValue("");
+          }
         }
 
-        console.log(this.fg.value);
+        console.log(this.fg.get('Type').value);
 
       });
     }
@@ -86,17 +92,29 @@ export class PpayPaymentCreatingPage implements OnInit {
     }
 
     if (this.fg.valid) {
-      if (this.fg.get('Coupon').value.length == 0) {
+      if (this.fg.get('Type').value != 'alipay' && this.fg.get('Coupon').value.length == 0) {
         this.checkusecoupon = false;
         console.log(this.checkusecoupon);
         let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
         this.router.navigate(['/ppay-payment-confirm'], param);
       }
-      if (this.fg.get('Coupon').value.length > 0) {
+      if (this.fg.get('Type').value != 'alipay' && this.fg.get('Coupon').value.length > 0) {
         this.checkusecoupon = true;
         console.log(this.checkusecoupon);
         let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
         this.router.navigate(['/ppay-payment-confirm'], param);
+      }
+      if (this.fg.get('Type').value == 'alipay' && this.fg.get('Coupon').value.length == 0) {
+        this.checkusecoupon = false;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
+      }
+      if (this.fg.get('Type').value == 'alipay' && this.fg.get('Coupon').value.length > 0) {
+        this.checkusecoupon = true;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
       }
     }
     // if (this.fg.valid) {
