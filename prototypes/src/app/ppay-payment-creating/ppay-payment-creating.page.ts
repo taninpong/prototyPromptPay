@@ -126,7 +126,7 @@ export class PpayPaymentCreatingPage implements OnInit {
   }
 
   usecoupon() {
-    var coupons = [{ 'id': 1, 'name': 'x1 คูปองส่วนลด 20 บาท', 'value': 20, checkuse: true }, { 'id': 2, 'name': 'x1 คูปองส่วนลด 50 บาท]', 'value': 50, checkuse: true }, { 'id': 3, 'name': 'x1 คูปองส่งฟรี', 'value': 0, checkuse: false }];
+    var coupons = [{ 'id': 1, 'name': 'x1 คูปองส่วนลด 20 บาท', 'value': 20, checkuse: true }, { 'id': 2, 'name': 'x1 คูปองส่วนลด 50 บาท', 'value': 50, checkuse: true }, { 'id': 3, 'name': 'x1 คูปองส่งฟรี', 'value': 0, checkuse: false }];
     this.fg.setControl('Coupon', this.fb.array(coupons || []));
     this.discount = 0;
     this.sumcouponprice();

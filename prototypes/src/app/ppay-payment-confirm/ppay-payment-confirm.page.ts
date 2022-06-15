@@ -16,8 +16,10 @@ export class PpayPaymentConfirmPage implements OnInit {
   discount: number = 0;
   fee: number = 0;
   hideList = true;
+  checkCo: any;
 
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+    
     if (this.route.queryParams) {
       this.route.queryParams.subscribe(params => {
         let value = params["data"];
@@ -25,6 +27,9 @@ export class PpayPaymentConfirmPage implements OnInit {
           this.data = JSON.parse(value);
           console.log("xxx", this.data);
           console.log("data.Coupon", this.data.Coupon);
+          this.checkCo = this.data.Coupon
+          console.log("444", this.checkCo);
+          
           this.fg.patchValue(this.data);
           console.log(this.fg.value);
           if (this.fg.get('Number').value == 1) {
@@ -65,6 +70,7 @@ export class PpayPaymentConfirmPage implements OnInit {
       'Fee': 0,
       'Discount': 0,
     });
+    
   }
 
   ngOnInit() {
