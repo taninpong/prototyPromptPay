@@ -116,21 +116,21 @@ export class ListpromptpayPage implements OnInit {
   }
   gono9() {
     this.fg.get('Number').setValue(9);
-    this.fg.get('Type').setValue('PP');
+    this.fg.get('Type').setValue('alipay');
     this.fg.get('Price').setValue(0);
     this.fg.get('M3').setValue(false);
     this.fg.get('M4').setValue(false);
     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-    this.router.navigate(['/account-select'], param);
+    this.router.navigate(['/ppay-payment-creating'], param);
   }
   gono10() {
     this.fg.get('Number').setValue(10);
-    this.fg.get('Type').setValue('Bank');
+    this.fg.get('Type').setValue('crypto');
     this.fg.get('Price').setValue(0);
     this.fg.get('M3').setValue(false);
     this.fg.get('M4').setValue(true);
     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-    this.router.navigate(['/account-select'], param);
+    this.router.navigate(['/ppay-payment-creating'], param);
   }
   gono11() {
     this.fg.get('Number').setValue(11);

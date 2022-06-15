@@ -20,12 +20,15 @@
             *ngIf="this.fg.get('Type').value=='PA'">
           <img class="logo-l circle center ion-margin-top" src="assets/imgs/BeedaDelivery.jpg"
             *ngIf="this.fg.get('Type').value=='BA'">
+          <img class="logo-l circle center ion-margin-top" src="assets/imgs/alipay.png"
+            *ngIf="this.fg.get('Type').value=='alipay'">
         </ion-item>
         <ion-item color="tertiary" class="ion-text-center">
           <ion-label class="ion-no-margin">
             <h2><b>{{this.fg.get('FirstnameTH').value}} {{this.fg.get('LastnameTH').value}}</b></h2>
             <h2 *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
-              <b>{{this.fg.get('FirstnameEN').value}} {{this.fg.get('LastnameEN').value}}</b></h2>
+              <b>{{this.fg.get('FirstnameEN').value}} {{this.fg.get('LastnameEN').value}}</b>
+            </h2>
           </ion-label>
         </ion-item>
         <!-- <ion-item color="tertiary" lines="none">
@@ -122,10 +125,10 @@
           </ion-fab-button>
         </ion-item> -->
         <!-- xxxxx -->
-        
+
         <div formArrayName="Coupon">
 
-          <ion-item color="tertiary" lines="none" *ngIf="checkCo.length < 1"> 
+          <ion-item color="tertiary" lines="none" *ngIf="checkCo.length < 1">
             <ion-label class="ion-no-margin">
               <h3>ไม่มีคูปอง </h3>
             </ion-label>
@@ -140,7 +143,7 @@
             <ion-item color="tertiary" lines="none" class="ion-no-padding" *ngIf="item.value.checkuse == true">
               <ion-col class="ion-no-padding" size="0.3">
               </ion-col>
-  
+
               <ion-col class="ion-no-padding" size="1">
                 <img class="logo-s circle" src="assets/imgs/coupon-small-red.png">
               </ion-col>
@@ -160,7 +163,8 @@
         </div>
       </ion-list>
 
-      <ion-item class="ion-margin-top" lines="none" color="tertiary" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
+      <ion-item class="ion-margin-top" lines="none" color="tertiary"
+        *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
         <ion-label for="customInputAmount">
           <h2><b>เพิ่มเติม</b></h2>
         </ion-label>
@@ -178,6 +182,10 @@
         </ion-label>
         <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
           <h2>เลขที่บัญชี {{this.fg.get('Accountnumber').value}}</h2>
+        </ion-label>
+        <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
+          <h2>Ref. <ion-text color="medium">2345678901</ion-text>
+          </h2>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" lines="none">
