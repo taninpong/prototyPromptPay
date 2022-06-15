@@ -46,7 +46,7 @@ export class PpayPaymentCreatingPage implements OnInit {
             this.fg.get('LastnameTH').setValue("ไปกินติมไหม");
           }
         }
-      
+
         console.log(this.fg.value);
 
       });
@@ -84,40 +84,55 @@ export class PpayPaymentCreatingPage implements OnInit {
     if (this.isFirstTime) {
       this.isFirstTime = false;
     }
+
     if (this.fg.valid) {
       if (this.fg.get('Coupon').value.length == 0) {
-        const alert = await this.alertController.create({
-          header: 'แจ้งเตือน!',
-          message: 'คุณจะใช้คูปองที่มีหรือไม่',
-          buttons: [
-            {
-              text: 'ไม่ใช้',
-              role: 'cancel',
-              cssClass: 'secondary',
-              handler: (blah) => {
-                this.checkusecoupon = false;
-                console.log(this.checkusecoupon);
-                let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-                this.router.navigate(['/ppay-payment-confirm'], param);
-              }
-            }, {
-              text: 'ใช้',
-              handler: () => {
-                this.checkusecoupon = true;
-                console.log(this.checkusecoupon);
-                this.usecoupon();
-                let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-                this.router.navigate(['/ppay-payment-confirm'], param);
-              }
-            }
-          ]
-        });
-        await alert.present();
-      } else {
+        this.checkusecoupon = false;
+        console.log(this.checkusecoupon);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/ppay-payment-confirm'], param);
+      }
+      if (this.fg.get('Coupon').value.length > 0) {
+        this.checkusecoupon = true;
+        console.log(this.checkusecoupon);
         let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
         this.router.navigate(['/ppay-payment-confirm'], param);
       }
     }
+    // if (this.fg.valid) {
+    //   if (this.fg.get('Coupon').value.length == 0) {
+    //     const alert = await this.alertController.create({
+    //       header: 'แจ้งเตือน!',
+    //       message: 'คุณจะใช้คูปองที่มีหรือไม่',
+    //       buttons: [
+    //         {
+    //           text: 'ไม่ใช้',
+    //           role: 'cancel',
+    //           cssClass: 'secondary',
+    //           handler: (blah) => {
+    //             this.checkusecoupon = false;
+    //             console.log(this.checkusecoupon);
+    //             let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+    //             this.router.navigate(['/ppay-payment-confirm'], param);
+    //           }
+    //         }, {
+    //           text: 'ใช้',
+    //           handler: () => {
+    //             this.checkusecoupon = true;
+    //             console.log(this.checkusecoupon);
+    //             this.usecoupon();
+    //             let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+    //             this.router.navigate(['/ppay-payment-confirm'], param);
+    //           }
+    //         }
+    //       ]
+    //     });
+    //     await alert.present();
+    //   } else {
+    //     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+    //     this.router.navigate(['/ppay-payment-confirm'], param);
+    //   }
+    // }
   }
 
   isInvalid(name: string): boolean {
@@ -172,7 +187,7 @@ export class PpayPaymentCreatingPage implements OnInit {
 
   }
 
-  openOptionDlg(){
+  openOptionDlg() {
     this.router.navigate(['/option-dialog-template']);
   }
 
