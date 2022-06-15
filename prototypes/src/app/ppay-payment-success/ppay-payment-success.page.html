@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title *ngIf="this.fg.get('Type').value=='QR'">รายละเอียดจ่ายเงิน</ion-title>
+    <ion-title *ngIf="this.fg.get('Type').value=='QR'" class="ion-text-center">ธุรกรรมสำเร็จ</ion-title>
     <ion-title *ngIf="this.fg.get('Type').value=='PP'|| this.fg.get('Type').value=='Bank'">รายละเอียดโอน-จ่าย
     </ion-title>
   </ion-toolbar>
@@ -10,7 +10,7 @@
   <ng-container>
     <form [formGroup]="fg">
       <ion-card class="ion-padding-top" color="tertiary">
-        <ion-item class="ion-text-center" color="tertiary" lines="none">
+        <ion-item class="ion-text-center ion-margin-bottom" color="tertiary" lines="none">
           <ion-grid class="ion-padding">
             <ion-row class="ion-text-center ion-align-items-center">
               <ion-col size="6" class="ion-text-center">
@@ -65,26 +65,26 @@
             </ion-row>
           </ion-grid>
         </ion-item>
+
         <ion-item class="ion-text-center" color="tertiary" lines="full">
           <ion-label color="danger">
-
             <h2><b>
-                <ion-icon name="checkmark-circle-outline" color="primary" class="ion-no-margin"></ion-icon> {{
-                ParseToTwoDecimal(this.fg.get('total').value)| number:'1.2-2' }}
-                <small> THB</small>
+                <ion-icon color="primary" name="checkmark-circle-sharp"></ion-icon>
+                {{ ParseToTwoDecimal(this.fg.get('total').value)| number:'1.2-2' }}
+                <small>THB</small>
               </b>
             </h2>
           </ion-label>
         </ion-item>
 
-        <ion-item color="tertiary" class="ion-padding-vertical" lines="none">
+        <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
           <ion-avatar slot="start" class="avatar-m">
             <img class="non-circle" src="assets/imgs/qrcode.png" />
           </ion-avatar>
           <ion-label>
             <h2><b>รหัสอ้างอิง : STK{{rand}}</b></h2>
             <ion-text color="medium">
-              <h3>วันที่ {{date | date:'dd/MM/yyyy (H:mm)' }}</h3>
+              <h3>วันที่ : {{date | date:'dd/MM/yyyy ( H:mm )' }}</h3>
             </ion-text>
           </ion-label>
           <!-- TODO: implement share -->
@@ -98,13 +98,13 @@
             </ion-label>
           </ion-note>
         </ion-item>
-        <ion-item color="tertiary" lines="none"
+        <!-- <ion-item color="tertiary" lines="none"
           *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
           <ion-label for="customInputAmount">
             <h2><b>เพิ่มเติม</b></h2>
           </ion-label>
-        </ion-item>
-        <ion-item color="tertiary" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
+        </ion-item> -->
+        <!-- <ion-item color="tertiary" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
           <ion-label for="customInputAmount"
             *ngIf="this.fg.get('Type').value=='QRP' || this.fg.get('Type').value=='PP'">
             <h2><b>เลขที่พร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
@@ -119,14 +119,14 @@
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
             <h2><b>เลขที่บัญชี</b> {{this.fg.get('Accountnumber').value}}</h2>
           </ion-label>
-        </ion-item>
+        </ion-item> -->
         <ion-item color="tertiary" lines="none">
           <ion-label for="customInputAmount">
             <h2><b>หมายเหตุ</b></h2>
           </ion-label>
         </ion-item>
-        <ion-item color="tertiary" lines="full">
-          <ion-textarea type="text" placeholder="" rows="1" formControlName="Remark" [disabled]="true"></ion-textarea>
+        <ion-item color="tertiary" lines="none">
+          <ion-textarea type="text" placeholder="" rows="2" formControlName="Remark" [disabled]="true"></ion-textarea>
         </ion-item>
       </ion-card>
       <div size="12" class="indentation">
@@ -135,7 +135,7 @@
       <ion-label color="medium" class="ion-text-center" (click)="godetail()">
         <h3>
           <a class="link-medium">
-            <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดบิล
+            <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดธุรกรรม
           </a>
         </h3>
       </ion-label>
