@@ -31,6 +31,8 @@
                     *ngIf="this.fg.get('Type').value=='BA'">
                     <img class="logo-l circle center ion-margin-top" src="assets/imgs/alipay.png"
                     *ngIf="this.fg.get('Type').value=='alipay'">
+                    <img class="logo-l circle center ion-margin-top" src="assets/imgs/crypto.png"
+                    *ngIf="this.fg.get('Type').value=='crypto'">
                 </div>
               </ion-col>
             </ion-row>
@@ -68,7 +70,7 @@
           </ion-grid>
         </ion-item>
 
-        <ion-item class="ion-text-center" color="tertiary" lines="full">
+        <ion-item class="ion-text-center" color="tertiary" lines="full" *ngIf="this.fg.get('Type').value != 'alipay' && this.fg.get('Type').value !='crypto'">
           <ion-label color="danger">
             <h2><b>
                 <ion-icon color="primary" name="checkmark-circle-sharp"></ion-icon>
@@ -76,6 +78,38 @@
                 <small>THB</small>
               </b>
             </h2>
+          </ion-label>
+        </ion-item>
+
+        <ion-item class="ion-text-center" color="tertiary" lines="full" *ngIf="this.fg.get('Type').value=='alipay'">
+          <ion-label color="danger" class="ion-padding-bottom">
+            <h2><b>
+                <ion-icon color="primary" name="checkmark-circle-sharp"></ion-icon>
+                {{ ParseToTwoDecimal(this.fg.get('total').value)| number:'1.2-2' }}
+                <small>CNY</small>
+              </b>
+            </h2>
+            <ion-text color="medium"><h3>
+              <ion-icon></ion-icon>
+              525.00
+              <small>THB</small>
+          </h3></ion-text>
+          </ion-label>
+        </ion-item>
+
+        <ion-item class="ion-text-center" color="tertiary" lines="full" *ngIf="this.fg.get('Type').value=='crypto'">
+          <ion-label color="danger" class="ion-padding-bottom">
+            <h2><b>
+                <ion-icon color="primary" name="checkmark-circle-sharp"></ion-icon>
+                {{ ParseToTwoDecimal(this.fg.get('total').value)| number:'1.2-2' }}
+                <small>BTC</small>
+              </b>
+            </h2>
+            <ion-text color="medium"><h3>
+              <ion-icon></ion-icon>
+              1,020,000.00
+              <small>THB</small>
+          </h3></ion-text>
           </ion-label>
         </ion-item>
 
@@ -112,7 +146,7 @@
             *ngIf="this.fg.get('Type').value=='QRP' || this.fg.get('Type').value=='PP'">
             <h2><b>เลขที่พร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
           </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'" class="ion-padding-bottom">
             <div>
               <h2><b>BillerId</b> : 01055637789355 </h2>
               <h2><b>ref1</b> : 0036671388 </h2>
@@ -125,6 +159,14 @@
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
             <h2>Ref. <ion-text color="medium">2345678901</ion-text>
             </h2>
+          </ion-label>
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'" class="ion-padding-bottom">
+            <div>
+              <h2>Address <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
+              </h2>
+              <h2>Network <ion-text color="medium">Mainchain</ion-text>
+              </h2>
+            </div>
           </ion-label>
         </ion-item>
 

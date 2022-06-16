@@ -112,7 +112,7 @@
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRP'|| this.fg.get('Type').value=='PP'">
             <h2><b>เลขที่พร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
           </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'" class="ion-padding-bottom">
             <div>
               <h2><b>BillerId</b> : 01055637789355 </h2>
               <h2><b>ref1</b> : 0036671388 </h2>
@@ -125,6 +125,14 @@
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
             <h2>Ref. <ion-text color="medium">2345678901</ion-text>
             </h2>
+          </ion-label>
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'" class="ion-padding-bottom">
+            <div>
+              <h2>Address <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
+              </h2>
+              <h2>Network <ion-text color="medium">Mainchain</ion-text>
+              </h2>
+            </div>
           </ion-label>
         </ion-item>
         <ion-item color="tertiary" lines="none">
