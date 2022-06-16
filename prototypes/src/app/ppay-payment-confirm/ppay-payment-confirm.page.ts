@@ -41,7 +41,8 @@ export class PpayPaymentConfirmPage implements OnInit {
         }
         this.fg.setControl('Coupon', this.fb.array(this.data.Coupon || []));
         this.discountprice();
-        this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
+        // this.fg.get('total').setValue(this.fg.get('Price').value + this.fee - this.discount);
+        this.fg.get('total').setValue(this.fg.get('Price').value + this.fg.get('Fee').value - this.discount);
         if (this.fg.get('total').value < 0) {
           this.fg.get('total').setValue(0);
         }

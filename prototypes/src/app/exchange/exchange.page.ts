@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
@@ -55,12 +55,16 @@ export class ExchangePage implements OnInit {
     if (this.fg.get('Coupon').value.length == 0) {
       this.checkusecoupon = false;
       console.log(this.checkusecoupon);
+      this.fg.get('Type').value == 'alipay' ? this.fg.get("Fee").setValue(5) : this.fg.get("Fee").setValue(0.04);
+      console.log(this.fg.get('Fee').value);
       let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
       this.router.navigate(['/ppay-payment-confirm'], param);
     }
     if (this.fg.get('Coupon').value.length > 0) {
       this.checkusecoupon = true;
       console.log(this.checkusecoupon);
+      this.fg.get('Type').value == 'alipay' ? this.fg.get("Fee").setValue(5) : this.fg.get("Fee").setValue(0.04);
+      console.log(this.fg.get('Fee').value);
       let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
       this.router.navigate(['/ppay-payment-confirm'], param);
     }
