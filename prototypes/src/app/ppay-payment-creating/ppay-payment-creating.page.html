@@ -199,16 +199,31 @@
             <h2><b>เพิ่มเติม</b></h2>
           </ion-label>
         </ion-item>
-        <ion-item color="tertiary" lines="full"
-          *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
-          <ion-label for="customInputAmount"
-            *ngIf="this.fg.get('Type').value=='QRP' || this.fg.get('Type').value=='PP'">
-            <h2>หมายเลขพร้อมเพย์ {{this.fg.get('Accountnumber').value}}</h2>
+        <ion-item color="tertiary" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
+
+          <ion-label class="ion-text-left" for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRP'|| this.fg.get('Type').value=='PP'">
+            <h2><b>หมายเลขพร้อมเพย์ </b>: {{this.fg.get('Accountnumber').value}}</h2>
+          </ion-label>
+
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
+            <h2><b>เลขที่บัญชี</b> {{this.fg.get('Accountnumber').value}}</h2>
+          </ion-label>
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
+            <h2><b>Ref.</b> &nbsp;<ion-text color="medium">2345678901</ion-text>
+            </h2>
+          </ion-label>
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'">
+            <div>
+              <h2><b>Address</b> &nbsp; <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
+              </h2>
+              <h2><b>Network</b>  &nbsp; <ion-text color="medium">Mainchain</ion-text>
+              </h2>
+            </div>
           </ion-label>
 
           <ion-grid class="ion-no-padding">
             <ion-row>
-              <ion-col size="3" >
+              <ion-col size="3">
                 <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
                   <h2><b>Biller ID</b></h2>
                 </ion-label>
@@ -216,7 +231,7 @@
               <ion-col size="8">
                 <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
                   <ion-text color="medium">
-                   <h2>01055637789355</h2> 
+                    <h2>01055637789355</h2>
                   </ion-text>
                 </ion-label>
               </ion-col>
@@ -251,42 +266,21 @@
             </ion-row>
           </ion-grid>
 
-          <!-- <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
-            <div>
-              <h2>BillerId : 010556377893556 </h2>
-              <h2>Ref.1 : 0036671388 </h2>
-              <h2>Ref.2 : 000P8444111</h2>
-            </div>
-          </ion-label> -->
-
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
-            <h2>เลขที่บัญชี {{this.fg.get('Accountnumber').value}}</h2>
-          </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
-            <h2>Ref. <ion-text color="medium">2345678901</ion-text>
-            </h2>
-          </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'">
-            <div>
-              <h2>Address <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
-              </h2>
-              <h2>Network <ion-text color="medium">Mainchain</ion-text>
-              </h2>
-            </div>
-          </ion-label>
+          <!-- <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'" class="ion-padding-bottom">
+          <div>
+            <h2><b>Biller ID</b> : 01055637789355 </h2>
+            <h2><b>Ref.1</b> : 0036671388 </h2>
+            <h2><b>Ref.2</b> : 000P8444111</h2>
+          </div>
+        </ion-label> -->      
         </ion-item>
-
-
         <ion-item color="tertiary" lines="none">
           <ion-label for="customInputAmount">
             <h2><b>หมายเหตุ</b></h2>
           </ion-label>
         </ion-item>
         <ion-item color="tertiary" lines="none">
-          <ion-textarea type="text" placeholder="รายละเอียดเพิ่มเติม" rows="1" formControlName="Remark"></ion-textarea>
-          <!-- <ion-label class="ion-no-margin">
-          <h3>Option Detail</h3>
-        </ion-label> -->
+          <ion-textarea type="text" placeholder="" rows="1" formControlName="Remark" [disabled]="true">มีหยังก้ใสมาหมายเหตุในฝัน</ion-textarea>
         </ion-item>
       </ion-list>
     </form>

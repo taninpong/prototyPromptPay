@@ -31,7 +31,7 @@
                     *ngIf="this.fg.get('Type').value=='PA'">
                   <img class="logo-l circle center ion-margin-top" src="assets/imgs/BeedaDelivery.jpg"
                     *ngIf="this.fg.get('Type').value=='BA'">
-                    <img class="logo-l circle center ion-margin-top" src="assets/imgs/alipay.png"
+                  <img class="logo-l circle center ion-margin-top" src="assets/imgs/alipay.png"
                     *ngIf="this.fg.get('Type').value=='alipay'">
                 </div>
               </ion-col>
@@ -109,13 +109,14 @@
           </ion-label>
         </ion-item>
         <ion-item color="tertiary" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRP'|| this.fg.get('Type').value=='PP'" class="ion-padding-bottom">
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRP'|| this.fg.get('Type').value=='PP'"
+            class="ion-padding-bottom">
             <h2><b>เลขที่พร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
           </ion-label>
 
           <ion-grid class="ion-no-padding">
             <ion-row>
-              <ion-col size="3" >
+              <ion-col size="3">
                 <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
                   <h2><b>Biller ID</b></h2>
                 </ion-label>
@@ -123,7 +124,7 @@
               <ion-col size="8">
                 <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRB'">
                   <ion-text color="medium">
-                   <h2>01055637789355</h2> 
+                    <h2>01055637789355</h2>
                   </ion-text>
                 </ion-label>
               </ion-col>
@@ -169,11 +170,13 @@
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
             <h2><b>เลขที่บัญชี</b> {{this.fg.get('Accountnumber').value}}</h2>
           </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
+
+
+          <ion-label class="ion-text-left" for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
             <h2>Ref. <ion-text color="medium">2345678901</ion-text>
             </h2>
           </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'" class="ion-padding-bottom">
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'">
             <div>
               <h2>Address <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
               </h2>
@@ -181,6 +184,7 @@
               </h2>
             </div>
           </ion-label>
+
         </ion-item>
         <ion-item color="tertiary" lines="none">
           <ion-label for="customInputAmount">

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
   <div *ngIf="this.fg.get('Type').value=='alipay'">
     <ion-list class="ion-margin-top" lines="full">
       <ion-item color="tertiary" lines="none">
@@ -86,7 +86,7 @@
       </ion-item>
       <ion-item color="tertiary" lines="full">
         <ion-label>
-          <h2>Ref. <ion-text color="medium" >2345678901</ion-text>
+          <h2><b>Ref.</b> &nbsp;<ion-text color="medium">2345678901</ion-text>
           </h2>
         </ion-label>
       </ion-item>
@@ -183,9 +183,9 @@
       <ion-item color="tertiary" lines="full">
         <ion-label>
         <div>
-          <h2>Address  <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text> </h2>
-          <h2>Network  <ion-text color="medium">Mainchain</ion-text> </h2>
-        </div>
+          <h2><b>Address</b> &nbsp; <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text></h2>
+          <h2><b>Network</b>  &nbsp; <ion-text color="medium">Mainchain</ion-text></h2>
+    </div>
       </ion-label>
       </ion-item>
 
@@ -196,7 +196,7 @@
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" lines="none">
-        <ion-label type="text" rows="1">{{this.fg.get('Remark').value}}</ion-label>
+        <ion-label type="text" rows="1">มีหยังก้ใสมาหมายเหตุในฝัน</ion-label>
       </ion-item>
     </ion-list>
   </div>
