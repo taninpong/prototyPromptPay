@@ -108,10 +108,28 @@
             <h2><b>เพิ่มเติม</b></h2>
           </ion-label>
         </ion-item>
-        <ion-item color="tertiary" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
+        <ion-item color="tertiary" lines="full" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRP'|| this.fg.get('Type').value=='PP'"
             class="ion-padding-bottom">
-            <h2><b>เลขที่พร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
+            <h2><b>หมายเลขพร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
+          </ion-label>
+
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
+            <h2><b>เลขที่บัญชี</b> {{this.fg.get('Accountnumber').value}}</h2>
+          </ion-label>
+
+
+          <ion-label class="ion-text-left" for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
+            <h2><b>Ref.</b> &nbsp;<ion-text color="medium">2345678901</ion-text>
+            </h2>
+          </ion-label>
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'">
+            <div>
+              <h2><b>Address</b> &nbsp; <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
+              </h2>
+              <h2><b>Network</b>  &nbsp; <ion-text color="medium">Mainchain</ion-text>
+              </h2>
+            </div>
           </ion-label>
 
           <ion-grid class="ion-no-padding">
@@ -167,33 +185,17 @@
             </div>
           </ion-label> -->
 
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
-            <h2><b>เลขที่บัญชี</b> {{this.fg.get('Accountnumber').value}}</h2>
-          </ion-label>
-
-
-          <ion-label class="ion-text-left" for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
-            <h2>Ref. <ion-text color="medium">2345678901</ion-text>
-            </h2>
-          </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'">
-            <div>
-              <h2>Address <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
-              </h2>
-              <h2>Network <ion-text color="medium">Mainchain</ion-text>
-              </h2>
-            </div>
-          </ion-label>
-
         </ion-item>
+
         <ion-item color="tertiary" lines="none">
           <ion-label for="customInputAmount">
             <h2><b>หมายเหตุ</b></h2>
           </ion-label>
         </ion-item>
         <ion-item color="tertiary" lines="full">
-          <ion-textarea type="text" placeholder="" rows="1" formControlName="Remark" [disabled]="true"></ion-textarea>
+          <label>มีหยังก็ใส่มาหมายเหตุในฝัน</label>
         </ion-item>
+
         <ion-item color="tertiary" lines="full" class="ion-padding-top">
           <ion-grid class="ion-no-padding">
             <ion-row>
@@ -254,7 +256,7 @@
           </ion-grid>
         </ion-item>
 
-        <ion-item *ngIf="fg.get('Coupon').value.length == 0" color="tertiary" lines="full">
+        <ion-item *ngIf="fg.get('Coupon').value.length == 0" color="tertiary" lines="none">
           <ion-label>
             <h3 class="line-height2">ไม่มีคูปอง</h3>
           </ion-label>
@@ -282,6 +284,7 @@
             </ion-item>
           </ion-list>
         </div>
+        <br>
 
       </ion-card>
       <!-- <div size="12" class="indentation">
