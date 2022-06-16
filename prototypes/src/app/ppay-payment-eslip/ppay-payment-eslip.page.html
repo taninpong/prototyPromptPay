@@ -30,6 +30,9 @@
                     *ngIf="this.fg.get('Type').value=='BA'">
                   <img class="logo-l circle center ion-margin-top" src="assets/imgs/alipay.png"
                     *ngIf="this.fg.get('Type').value=='alipay'">
+                    <img class="logo-l circle center ion-margin-top" src="assets/imgs/crypto.png"
+                    *ngIf="this.fg.get('Type').value=='crypto'">
+
                 </div>
               </ion-col>
             </ion-row>
@@ -61,7 +64,7 @@
           </ion-grid>
         </ion-item>
 
-        <ion-item color="tertiary" lines="full">
+        <ion-item color="tertiary" lines="full"  *ngIf="this.fg.get('Type').value != 'alipay' && this.fg.get('Type').value != 'crypto'">
           <ion-grid class="ion-no-padding">
             <ion-row>
               <ion-col class="ion-no-padding">
@@ -120,6 +123,151 @@
             </ion-row>
           </ion-grid>
         </ion-item>
+
+        <ion-item color="tertiary" lines="full" *ngIf="this.fg.get('Type').value == 'alipay'">
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2"><b>รายละเอียดธุรกรรม</b></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">จำนวนเงิน</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label>
+                  <h3>{{ this.fg.get('Price').value}}.00 <small>CNY</small></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">ค่าธรรมเนียม</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label>
+                  <h3>{{ this.fg.get('Fee').value}}.00 <small>CNY</small></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">ส่วนลด</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label>
+                  <h3>-{{discount}}.00 <small>CNY</small></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">รวมทั้งหมด</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label color="danger">
+                  <h3><b>{{this.fg.get('total').value}}.00 <small>CNY</small></b></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">&nbsp;</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label color="medium">
+                  <h3>*รวมทั้งหมด (THB)<b> 525.00 <small>THB</small></b></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
+        <ion-item color="tertiary" lines="full" *ngIf="this.fg.get('Type').value == 'crypto'">
+          <ion-grid class="ion-no-padding">
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2"><b>รายละเอียดธุรกรรม</b></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">จำนวนเงิน</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label>
+                  <h3>{{ this.fg.get('Price').value}}.00 <small>BTC</small></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">ค่าธรรมเนียม</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label>
+                  <h3>{{ this.fg.get('Fee').value}} <small>BTC</small></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">ส่วนลด</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label>
+                  <h3>-{{discount}}.00 <small>BTC</small></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">รวมทั้งหมด</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label color="danger">
+                  <h3><b>{{this.fg.get('total').value}}.00 <small>BTC</small></b></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-label>
+                  <h3 class="line-height2">&nbsp;</h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-no-padding ion-text-right">
+                <ion-label color="medium">
+                  <h3>*รวมทั้งหมด (THB)<b> 1,020,000.00 <small>THB</small></b></h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+
 
         <ion-item color="tertiary" lines="full">
           <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
@@ -186,7 +334,23 @@
           *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='QRP' || this.fg.get('Type').value=='PP'"
             class="ion-padding-bottom">
-            <h2>เลขที่พร้อมเพย์ {{this.fg.get('Accountnumber').value}}</h2>
+            <h2><b>หมายเลขพร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
+          </ion-label>
+
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
+            <h2><b>เลขที่บัญชี</b> {{this.fg.get('Accountnumber').value}}</h2>
+          </ion-label>
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
+            <h2><b>Ref.</b> &nbsp;<ion-text color="medium">2345678901</ion-text>
+            </h2>
+          </ion-label>
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'" class="ion-padding-bottom">
+            <div>
+              <h2><b>Address</b> &nbsp; <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
+              </h2>
+              <h2><b>Network</b>  &nbsp; <ion-text color="medium">Mainchain</ion-text>
+              </h2>
+            </div>
           </ion-label>
 
           <ion-grid class="ion-no-padding">
@@ -241,30 +405,15 @@
               <h2><b>Ref.2 </b>000P8444111</h2>
             </div>
           </ion-label> -->
-
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
-            <h2>เลขที่บัญชี {{this.fg.get('Accountnumber').value}}</h2>
-          </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
-            <h2>Ref. <ion-text color="medium">2345678901</ion-text>
-            </h2>
-          </ion-label>
-          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='crypto'" class="ion-padding-bottom">
-            <div>
-              <h2>Address <ion-text color="medium">Oxf7890105ce5637789FF355C6ea</ion-text>
-              </h2>
-              <h2>Network <ion-text color="medium">Mainchain</ion-text>
-              </h2>
-            </div>
-          </ion-label>
+    
         </ion-item>
         <ion-item color="tertiary" lines="none">
           <ion-label for="customInputAmount">
             <h2><b>หมายเหตุ</b></h2>
           </ion-label>
         </ion-item>
-        <ion-item color="tertiary" lines="full">
-          <ion-textarea type="text" placeholder="" rows="1" formControlName="Remark" [disabled]="true"></ion-textarea>
+        <ion-item color="tertiary" lines="none">
+          <ion-textarea type="text" placeholder="" rows="1" formControlName="Remark" [disabled]="true">มีหยังก็ใส่มาหมายเหตุในฝัน</ion-textarea>
         </ion-item>
       </ion-card>
     </form>
