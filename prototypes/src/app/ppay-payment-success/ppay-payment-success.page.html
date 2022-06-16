@@ -29,6 +29,8 @@
                     *ngIf="this.fg.get('Type').value=='PA'">
                   <img class="logo-l circle center ion-margin-top" src="assets/imgs/BeedaDelivery.jpg"
                     *ngIf="this.fg.get('Type').value=='BA'">
+                    <img class="logo-l circle center ion-margin-top" src="assets/imgs/alipay.png"
+                    *ngIf="this.fg.get('Type').value=='alipay'">
                 </div>
               </ion-col>
             </ion-row>
@@ -98,13 +100,14 @@
             </ion-label>
           </ion-note>
         </ion-item>
-        <!-- <ion-item color="tertiary" lines="none"
+
+        <ion-item color="tertiary" lines="none"
           *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
           <ion-label for="customInputAmount">
             <h2><b>เพิ่มเติม</b></h2>
           </ion-label>
-        </ion-item> -->
-        <!-- <ion-item color="tertiary" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
+        </ion-item>
+         <ion-item color="tertiary" lines="full" *ngIf="this.fg.get('Type').value!='PA'&&this.fg.get('Type').value!='BA'">
           <ion-label for="customInputAmount"
             *ngIf="this.fg.get('Type').value=='QRP' || this.fg.get('Type').value=='PP'">
             <h2><b>เลขที่พร้อมเพย์</b> : {{this.fg.get('Accountnumber').value}}</h2>
@@ -119,7 +122,12 @@
           <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='Bank'">
             <h2><b>เลขที่บัญชี</b> {{this.fg.get('Accountnumber').value}}</h2>
           </ion-label>
-        </ion-item> -->
+          <ion-label for="customInputAmount" *ngIf="this.fg.get('Type').value=='alipay'">
+            <h2>Ref. <ion-text color="medium">2345678901</ion-text>
+            </h2>
+          </ion-label>
+        </ion-item>
+
         <ion-item color="tertiary" lines="none">
           <ion-label for="customInputAmount">
             <h2><b>หมายเหตุ</b></h2>
@@ -128,6 +136,7 @@
         <ion-item color="tertiary" lines="none">
           <ion-textarea type="text" placeholder="" rows="2" formControlName="Remark" [disabled]="true"></ion-textarea>
         </ion-item>
+
       </ion-card>
       <div size="12" class="indentation">
       </div>
