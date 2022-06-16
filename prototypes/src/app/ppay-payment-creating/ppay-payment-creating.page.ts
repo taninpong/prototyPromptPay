@@ -51,6 +51,12 @@ export class PpayPaymentCreatingPage implements OnInit {
             this.fg.get('FirstnameEN').setValue("");
             this.fg.get('LastnameEN').setValue("");
           }
+          if (this.fg.get('Type').value == 'crypto') {
+            this.fg.get('FirstnameTH').setValue("Bitcoin");
+            this.fg.get('LastnameTH').setValue("network");
+            this.fg.get('FirstnameEN').setValue("");
+            this.fg.get('LastnameEN').setValue("");
+          }
         }
 
         console.log(this.fg.get('Type').value);
@@ -111,6 +117,18 @@ export class PpayPaymentCreatingPage implements OnInit {
         this.router.navigate(['/exchange'], param);
       }
       if (this.fg.get('Type').value == 'alipay' && this.fg.get('Coupon').value.length > 0) {
+        this.checkusecoupon = true;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
+      }
+      if (this.fg.get('Type').value == 'crypto' && this.fg.get('Coupon').value.length == 0) {
+        this.checkusecoupon = false;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
+      }
+      if (this.fg.get('Type').value == 'crypto' && this.fg.get('Coupon').value.length > 0) {
         this.checkusecoupon = true;
         console.log(this.fg.value);
         let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
