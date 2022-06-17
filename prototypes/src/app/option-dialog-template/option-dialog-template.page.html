@@ -1,50 +1,47 @@
-<ion-content mode="ios">
+<ion-content mode="ios" color="tertiary">
 
   <ion-list lines="inset">
-    <ion-list-header mode="md">
-      <ion-label>เลือกรายการ</ion-label>
+    <ion-list-header mode="md" color="tertiary">
+      <ion-label><h2>เลือกกระเป๋าที่ต้องการ</h2></ion-label>
     </ion-list-header>
 
     <ion-item color="tertiary">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/defaultshop.png">
-      </ion-avatar>
+      <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
       <ion-label>
-        <b>ชื่อรายการ</b>
+        <b>กระเป๋าของฉัน</b>
         <ion-text color="medium">
-          <h3>รายละเอียด</h3>
+          <h3>1000.00 THB</h3>
         </ion-text>
       </ion-label>
       <img width="20" height="20" class="qr" src="assets/imgs/correctblue.png" />
     </ion-item>
+
     <ion-item color="tertiary">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/defaultshop.png">
-      </ion-avatar>
+      <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
       <ion-label>
-        <b>ชื่อรายการ</b>
+        <b>กระเป๋าสำรอง 1</b>
         <ion-text color="medium">
-          <h3>รายละเอียด</h3>
-        </ion-text>
-      </ion-label>
-      <img width="20" height="20" class="qr" src="assets/imgs/correctgray.png" />
-    </ion-item>
-    <ion-item color="tertiary">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/defaultshop.png">
-      </ion-avatar>
-      <ion-label>
-        <b>ชื่อรายการ</b>
-        <ion-text color="medium">
-          <h3>รายละเอียด</h3>
+          <h3>500.00 THB</h3>
         </ion-text>
       </ion-label>
       <img width="20" height="20" class="qr" src="assets/imgs/correctgray.png" />
     </ion-item>
 
+    <ion-item color="tertiary">
+      <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
+      <ion-label>
+        <b>กระเป๋าสำรอง 2</b>
+        <ion-text color="medium">
+          <h3>100.00 THB</h3>
+        </ion-text>
+      </ion-label>
+      <img width="20" height="20" class="qr" src="assets/imgs/correctgray.png" />  
+      </ion-item>
+    
   </ion-list>
 
 </ion-content>
-<ion-footer>
-  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง</ion-button>
+<ion-footer class="ion-no-border ion-text-right">
+  <ion-button type="button" color="medium" ion-button fill="clear" (click)="onClick()"><b>ยกเลิก</b></ion-button>
+  <ion-button type="submit" color="primary" ion-button fill="clear" (click)="onClick()"><b>ตกลง</b></ion-button>
 </ion-footer>

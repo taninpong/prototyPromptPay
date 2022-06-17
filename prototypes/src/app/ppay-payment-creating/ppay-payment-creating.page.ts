@@ -45,9 +45,21 @@ export class PpayPaymentCreatingPage implements OnInit {
             this.fg.get('FirstnameTH').setValue("โอ้วแม่สาวน้อย");
             this.fg.get('LastnameTH').setValue("ไปกินติมไหม");
           }
+          if (this.fg.get('Type').value == 'alipay') {
+            this.fg.get('FirstnameTH').setValue("Alipay");
+            this.fg.get('LastnameTH').setValue("");
+            this.fg.get('FirstnameEN').setValue("");
+            this.fg.get('LastnameEN').setValue("");
+          }
+          if (this.fg.get('Type').value == 'crypto') {
+            this.fg.get('FirstnameTH').setValue("Bitcoin");
+            this.fg.get('LastnameTH').setValue("network");
+            this.fg.get('FirstnameEN').setValue("");
+            this.fg.get('LastnameEN').setValue("");
+          }
         }
-      
-        console.log(this.fg.value);
+
+        console.log(this.fg.get('Type').value);
 
       });
     }
@@ -84,40 +96,79 @@ export class PpayPaymentCreatingPage implements OnInit {
     if (this.isFirstTime) {
       this.isFirstTime = false;
     }
+
     if (this.fg.valid) {
-      if (this.fg.get('Coupon').value.length == 0) {
-        const alert = await this.alertController.create({
-          header: 'แจ้งเตือน!',
-          message: 'คุณจะใช้คูปองที่มีหรือไม่',
-          buttons: [
-            {
-              text: 'ไม่ใช้',
-              role: 'cancel',
-              cssClass: 'secondary',
-              handler: (blah) => {
-                this.checkusecoupon = false;
-                console.log(this.checkusecoupon);
-                let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-                this.router.navigate(['/ppay-payment-confirm'], param);
-              }
-            }, {
-              text: 'ใช้',
-              handler: () => {
-                this.checkusecoupon = true;
-                console.log(this.checkusecoupon);
-                this.usecoupon();
-                let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
-                this.router.navigate(['/ppay-payment-confirm'], param);
-              }
-            }
-          ]
-        });
-        await alert.present();
-      } else {
+      if (this.fg.get('Type').value != 'alipay' && this.fg.get('Coupon').value.length == 0) {
+        this.checkusecoupon = false;
+        console.log(this.checkusecoupon);
         let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
         this.router.navigate(['/ppay-payment-confirm'], param);
       }
+      if (this.fg.get('Type').value != 'alipay' && this.fg.get('Coupon').value.length > 0) {
+        this.checkusecoupon = true;
+        console.log(this.checkusecoupon);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/ppay-payment-confirm'], param);
+      }
+      if (this.fg.get('Type').value == 'alipay' && this.fg.get('Coupon').value.length == 0) {
+        this.checkusecoupon = false;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
+      }
+      if (this.fg.get('Type').value == 'alipay' && this.fg.get('Coupon').value.length > 0) {
+        this.checkusecoupon = true;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
+      }
+      if (this.fg.get('Type').value == 'crypto' && this.fg.get('Coupon').value.length == 0) {
+        this.checkusecoupon = false;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
+      }
+      if (this.fg.get('Type').value == 'crypto' && this.fg.get('Coupon').value.length > 0) {
+        this.checkusecoupon = true;
+        console.log(this.fg.value);
+        let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+        this.router.navigate(['/exchange'], param);
+      }
     }
+    // if (this.fg.valid) {
+    //   if (this.fg.get('Coupon').value.length == 0) {
+    //     const alert = await this.alertController.create({
+    //       header: 'แจ้งเตือน!',
+    //       message: 'คุณจะใช้คูปองที่มีหรือไม่',
+    //       buttons: [
+    //         {
+    //           text: 'ไม่ใช้',
+    //           role: 'cancel',
+    //           cssClass: 'secondary',
+    //           handler: (blah) => {
+    //             this.checkusecoupon = false;
+    //             console.log(this.checkusecoupon);
+    //             let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+    //             this.router.navigate(['/ppay-payment-confirm'], param);
+    //           }
+    //         }, {
+    //           text: 'ใช้',
+    //           handler: () => {
+    //             this.checkusecoupon = true;
+    //             console.log(this.checkusecoupon);
+    //             this.usecoupon();
+    //             let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+    //             this.router.navigate(['/ppay-payment-confirm'], param);
+    //           }
+    //         }
+    //       ]
+    //     });
+    //     await alert.present();
+    //   } else {
+    //     let param: NavigationExtras = { queryParams: { data: JSON.stringify(this.fg.value) } };
+    //     this.router.navigate(['/ppay-payment-confirm'], param);
+    //   }
+    // }
   }
 
   isInvalid(name: string): boolean {
@@ -126,7 +177,7 @@ export class PpayPaymentCreatingPage implements OnInit {
   }
 
   usecoupon() {
-    var coupons = [{ 'id': 1, 'name': 'ส่วนลด 20 THB', 'value': 20, checkuse: true }, { 'id': 2, 'name': 'ส่วนลด 50 THB', 'value': 50, checkuse: true }, { 'id': 3, 'name': 'ส่งฟรี', 'value': 0, checkuse: false }];
+    var coupons = [{ 'id': 1, 'name': 'x1 คูปองส่วนลด 20 บาท', 'value': 20, checkuse: true }, { 'id': 2, 'name': 'x1 คูปองส่วนลด 50 บาท', 'value': 50, checkuse: true }, { 'id': 3, 'name': 'x1 คูปองส่งฟรี', 'value': 0, checkuse: false }];
     this.fg.setControl('Coupon', this.fb.array(coupons || []));
     this.discount = 0;
     this.sumcouponprice();
@@ -171,5 +222,10 @@ export class PpayPaymentCreatingPage implements OnInit {
     console.log(ev.detail);
 
   }
+
+  openOptionDlg() {
+    this.router.navigate(['/option-dialog-template']);
+  }
+
 
 }

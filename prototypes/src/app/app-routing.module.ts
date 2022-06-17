@@ -142,7 +142,11 @@ const routes: Routes = [
   {
     path: 'ppay-payment-successx',
     loadChildren: () => import('./ppay-payment-successx/ppay-payment-successx.module').then( m => m.PpayPaymentSuccessxPageModule)
+  },  {
+    path: 'exchange',
+    loadChildren: () => import('./exchange/exchange.module').then( m => m.ExchangePageModule)
   },
+
 
 
 ];
